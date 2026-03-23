@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ─── Application Form ───
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxH-MspuCGbtZ0ibRE7215OUmgEAVnFGdziucRuCFEEWlWn9THZp0Us4MFCLfe4OnMf/exec';
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwcZAtL1tjVLLLyJbWAv6ElCSE--eqW9mbq_DGHnL9CyNQAzmjuRCUm_Ns2WKYJVqAb/exec';
 
   // File upload visual feedback
   document.querySelectorAll('.upload-field input[type="file"]').forEach(input => {
