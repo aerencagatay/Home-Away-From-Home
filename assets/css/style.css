@@ -459,6 +459,191 @@ html, body {
   letter-spacing: 0.05em;
 }
 
+/* ─── APPLICATION FORM ─── */
+.apply-layout {
+  display: flex;
+  gap: 4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 2rem 4rem;
+}
+
+.apply-info {
+  flex: 0 0 32%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-top: 0.5rem;
+}
+
+.apply-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.1;
+  color: var(--text);
+}
+
+.apply-deadline-badge {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.apply-deadline-badge strong {
+  color: var(--accent);
+  font-size: 1rem;
+}
+
+.fee-amount {
+  display: block;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.fee-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-top: 0.35rem;
+}
+
+.apply-form-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.apply-intro {
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 1.75rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.form-grid input[type="text"],
+.form-grid input[type="email"],
+.form-grid input[type="url"],
+.form-grid input[type="tel"],
+.form-grid input[type="date"] {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background: #151515;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  transition: border-color 0.2s;
+}
+
+.form-grid input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.form-grid input::placeholder {
+  color: var(--muted);
+}
+
+.upload-field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 1.25rem;
+  background: #151515;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  color: var(--muted);
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.upload-field:hover {
+  border-color: var(--accent);
+}
+
+.upload-field.has-file {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.upload-field.has-file .upload-plus {
+  display: none;
+}
+
+.upload-plus {
+  font-size: 1.25rem;
+  color: var(--accent);
+  font-weight: 300;
+  line-height: 1;
+}
+
+.apply-submit {
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 1.125rem 2rem;
+  font-size: 1rem;
+  border-radius: 10px;
+}
+
+.apply-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.apply-terms {
+  display: block;
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.8125rem;
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+
+.apply-terms:hover {
+  color: var(--accent);
+}
+
+.apply-success {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.apply-success h3 {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-style: italic;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.apply-success p {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
 /* Focus */
 :focus-visible {
   outline: 2px solid var(--accent);
@@ -475,6 +660,9 @@ html, body {
   .info-btn { top: 68px; right: 1.5rem; }
   .home-band .lang-toggle { right: 1.5rem; }
   .menu-footer { bottom: 2rem; }
+  .apply-layout { flex-direction: column; gap: 2rem; padding: 2rem 1.5rem 3rem; }
+  .apply-info { flex: none; }
+  .form-grid { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {

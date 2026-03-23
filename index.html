@@ -94,7 +94,7 @@
           </div>
         </div>
         <div class="call-actions">
-          <a href="#" class="btn btn-primary" target="_blank" rel="noopener noreferrer" data-i18n="openCall.applyBtn">Apply to the Open Call</a>
+          <button class="btn btn-primary" data-target="apply" data-i18n="openCall.applyBtn">Apply to the Open Call</button>
           <a href="#" class="btn btn-outline" target="_blank" rel="noopener noreferrer" data-i18n="openCall.guidelinesBtn">Full Guidelines &amp; Terms</a>
         </div>
       </div>
@@ -125,6 +125,73 @@
           </div>
         </div>
         <p class="contact-note">&copy; 2026 Milano: Home Away From Home</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ APPLICATION FORM VIEW ═══ -->
+  <div class="view view-section" id="view-apply">
+    <div class="section-bar">
+      <button class="back-btn" data-back="open-call" aria-label="Back">← Back</button>
+      <span class="section-label" data-i18n="openCall.applyBtn">Application</span>
+    </div>
+    <div class="section-scroll">
+      <div class="apply-layout">
+
+        <!-- Left info panel -->
+        <div class="apply-info">
+          <h2 class="apply-title">Open Call<br>Application</h2>
+          <div class="apply-deadline-badge">
+            <span>Final Deadline:</span>
+            <strong>1 May, 2026</strong>
+          </div>
+          <div class="apply-fee">
+            <span class="fee-amount">55€</span>
+            <span class="fee-label">General</span>
+          </div>
+        </div>
+
+        <!-- Right form panel -->
+        <div class="apply-form-wrap">
+          <p class="apply-intro">Join the community and be part of the upcoming exhibition in June 2026!</p>
+
+          <form class="apply-form" id="apply-form" novalidate>
+            <div class="form-grid">
+              <input type="text" name="name" placeholder="Name, Surname" required>
+              <input type="url" name="website" placeholder="Website">
+              <input type="text" name="dob" placeholder="Date of Birth" onfocus="this.type='date'" onblur="if(!this.value)this.type='text'" required>
+              <input type="text" name="instagram" placeholder="Instagram">
+              <input type="email" name="email" placeholder="Email" required>
+              <label class="upload-field">
+                <input type="file" name="cv" accept=".pdf,.doc,.docx" hidden>
+                <span class="upload-name">CV</span>
+                <span class="upload-plus">+</span>
+              </label>
+              <input type="text" name="address" placeholder="Address">
+              <label class="upload-field">
+                <input type="file" name="portrait" accept="image/*" hidden>
+                <span class="upload-name">Portrait Photo</span>
+                <span class="upload-plus">+</span>
+              </label>
+              <input type="tel" name="phone" placeholder="Phone">
+              <label class="upload-field">
+                <input type="file" name="portfolio" accept=".pdf" hidden>
+                <span class="upload-name">Portfolio PDF</span>
+                <span class="upload-plus">+</span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary apply-submit">Apply Now!</button>
+            <a href="#" class="apply-terms">Terms and Conditions</a>
+          </form>
+
+          <!-- Success message (hidden by default) -->
+          <div class="apply-success" id="apply-success" hidden>
+            <h3>Application Submitted!</h3>
+            <p>Thank you for applying. We will review your application and get back to you soon.</p>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>

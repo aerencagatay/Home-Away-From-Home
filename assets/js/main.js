@@ -61,4 +61,88 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
+
+  // ─── Application Form ───
+  const SCRIPT_URL = ''; // ← Paste your Google Apps Script URL here
+
+  // File upload visual feedback
+  document.querySelectorAll('.upload-field input[type="file"]').forEach(input => {
+    input.addEventListener('change', () => {
+      const label = input.closest('.upload-field');
+      const nameSpan = label.querySelector('.upload-name');
+      if (input.files.length > 0) {
+        label.classList.add('has-file');
+        nameSpan.textContent = input.files[0].name;
+      } else {
+        label.classList.remove('has-file');
+      }
+    });
+  });
+
+  // Form submit
+  const applyForm = document.getElementById('apply-form');
+  if (applyForm) {
+    applyForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const submitBtn = applyForm.querySelector('.apply-submit');
+      submitBtn.textContent = 'Submitting...';
+      submitBtn.disabled = true;
+
+      try {
+        const data = {};
+
+        // Collect text fields
+        const formData = new FormData(applyForm);
+        for (const [key, value] of formData.entries()) {
+          if (typeof value === 'string') data[key] = value;
+        }
+
+        // Collect file fields as base64
+        const fileInputs = applyForm.querySelectorAll('input[type="file"]');
+        for (const input of fileInputs) {
+          const file = input.files[0];
+          if (file) {
+            if (file.size > 5 * 1024 * 1024) {
+              throw new Error(input.name + ' is too large. Maximum 5 MB.');
+            }
+            data[input.name] = {
+              name: file.name,
+              type: file.type,
+              data: await toBase64(file)
+            };
+          }
+        }
+
+        if (!SCRIPT_URL) {
+          throw new Error('Form backend not configured yet.');
+        }
+
+        await fetch(SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: JSON.stringify(data)
+        });
+
+        // Success
+        applyForm.style.display = 'none';
+        const intro = document.querySelector('.apply-intro');
+        if (intro) intro.style.display = 'none';
+        document.getElementById('apply-success').hidden = false;
+
+      } catch (err) {
+        alert(err.message || 'Something went wrong. Please try again.');
+        submitBtn.textContent = 'Apply Now!';
+        submitBtn.disabled = false;
+      }
+    });
+  }
+
+  function toBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
 });
