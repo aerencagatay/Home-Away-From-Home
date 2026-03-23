@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Milano: Home Away From Home — A contemporary art exhibition exploring migration, belonging, and the spaces between. 4–7 June 2026, Milan.">
+  <meta name="theme-color" content="#1a1a1a">
+  <title>Milano: Home Away From Home</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Preconnect for external form -->
+  <link rel="preconnect" href="https://docs.google.com">
+</head>
+<body>
+
+  <!-- Skip Navigation -->
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- Header / Navigation -->
+  <header class="header" role="banner">
+    <div class="container header-inner">
+      <a href="/" class="logo" aria-label="Milano: Home Away From Home — Home">
+        <span class="logo-text">Milano</span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="#about" data-i18n="nav.about">About</a></li>
+          <li><a href="#open-call" data-i18n="nav.openCall">Open Call</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+        <button
+          class="lang-toggle"
+          type="button"
+          aria-label="Switch language"
+          data-lang-target="it"
+        >
+          IT
+        </button>
+      </nav>
+      <button class="mobile-menu-btn" type="button" aria-label="Open menu" aria-expanded="false">
+        <span class="hamburger"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container hero-content">
+      <p class="hero-tagline" data-i18n="hero.tagline">A Contemporary Art Exhibition</p>
+      <h1 id="hero-title" class="hero-title">
+        <span class="hero-title-city">Milano</span>
+        <span class="hero-title-sub">Home Away From Home</span>
+      </h1>
+      <div class="hero-meta">
+        <time datetime="2026-06-04/2026-06-07" class="hero-date">4–7 June 2026</time>
+        <span class="hero-divider" aria-hidden="true"></span>
+        <span class="hero-venue">Rifugio Antiaereo di Piazza Grandi, Milan</span>
+      </div>
+      <a
+        href="#open-call"
+        class="btn btn-primary hero-cta"
+        data-i18n="hero.cta"
+      >
+        Apply to the Open Call
+      </a>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main id="main">
+
+    <!-- About -->
+    <section id="about" class="section section-about" aria-labelledby="about-title">
+      <div class="container">
+        <h2 id="about-title" class="section-title" data-i18n="about.title">About the Exhibition</h2>
+        <div class="about-content">
+          <p class="about-text" data-i18n="about.text">
+            <em>Milano: Home Away From Home</em> explores what it means to build a life in a city that is not your own. Through the works of emerging artists who have experienced migration, displacement, or simply the quiet act of starting over, the exhibition transforms a WWII-era underground shelter into a space of reflection on belonging, identity, and the invisible ties that connect us to the places we call home — even temporarily. Set beneath Piazza Grandi in Milan, the venue itself carries the memory of shelter and refuge, echoing the journeys of the artists within.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Open Call -->
+    <section id="open-call" class="section section-open-call" aria-labelledby="opencall-title">
+      <div class="container">
+        <h2 id="opencall-title" class="section-title" data-i18n="openCall.title">Open Call for Artists</h2>
+        <div class="open-call-grid">
+          <div class="call-card">
+            <h3 class="call-card-title" data-i18n="openCall.whoTitle">Who Can Apply</h3>
+            <p data-i18n="openCall.whoText">
+              Emerging artists (18+) with experience living outside their home country or city, whose journey has crossed paths with Milan at some point.
+            </p>
+          </div>
+          <div class="call-card">
+            <h3 class="call-card-title" data-i18n="openCall.whatTitle">What to Submit</h3>
+            <p data-i18n="openCall.whatText">
+              Up to 3 works (existing or new) via the Google Forms application. All mediums are welcome.
+            </p>
+          </div>
+          <div class="call-card">
+            <h3 class="call-card-title" data-i18n="openCall.deadlineTitle">Deadline</h3>
+            <p data-i18n="openCall.deadlineText">
+              To be announced. Follow us for updates.
+            </p>
+          </div>
+        </div>
+        <div class="open-call-actions">
+          <a
+            href="#"
+            class="btn btn-primary"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-i18n="openCall.applyBtn"
+            aria-label="Apply to the Open Call (opens in a new tab)"
+          >
+            Apply to the Open Call
+          </a>
+          <a
+            href="#"
+            class="btn btn-secondary"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-i18n="openCall.guidelinesBtn"
+            aria-label="Read full guidelines (opens in a new tab)"
+          >
+            Full Guidelines &amp; Terms
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section section-contact" aria-labelledby="contact-title">
+      <div class="container">
+        <h2 id="contact-title" class="section-title" data-i18n="contact.title">Contact</h2>
+        <div class="contact-grid">
+          <div class="contact-item">
+            <h3 data-i18n="contact.artistsTitle">Artists</h3>
+            <a href="mailto:artists@example.com">artists@example.com</a>
+          </div>
+          <div class="contact-item">
+            <h3 data-i18n="contact.pressTitle">Press</h3>
+            <a href="mailto:press@example.com">press@example.com</a>
+          </div>
+          <div class="contact-item">
+            <h3 data-i18n="contact.partnersTitle">Partners &amp; Sponsors</h3>
+            <a href="mailto:partners@example.com">partners@example.com</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-inner">
+      <p class="footer-copy">&copy; 2026 Milano: Home Away From Home</p>
+      <p class="footer-privacy">
+        <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
