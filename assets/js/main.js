@@ -1,55 +1,64 @@
 /* ============================================
-   Main JS — Mobile menu & smooth interactions
+   Main JS — Interactive view navigation
    ============================================ */
 
-document.addEventListener("DOMContentLoaded", () => {
-  const menuBtn = document.querySelector(".mobile-menu-btn");
-  const nav = document.querySelector(".nav");
+document.addEventListener('DOMContentLoaded', () => {
+  let current = 'home';
 
-  // Mobile menu toggle
-  if (menuBtn && nav) {
-    menuBtn.addEventListener("click", () => {
-      const isOpen = menuBtn.getAttribute("aria-expanded") === "true";
-      menuBtn.setAttribute("aria-expanded", String(!isOpen));
-      menuBtn.setAttribute(
-        "aria-label",
-        isOpen ? "Open menu" : "Close menu"
-      );
-      nav.classList.toggle("is-open", !isOpen);
+  function showView(id) {
+    // Hide all views
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
 
-      // Prevent body scroll when menu is open
-      document.body.style.overflow = !isOpen ? "hidden" : "";
-    });
+    // Show target
+    const target = document.getElementById('view-' + id);
+    if (!target) return;
+    target.classList.add('active');
+    current = id;
 
-    // Close menu on nav link click
-    nav.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        menuBtn.setAttribute("aria-expanded", "false");
-        menuBtn.setAttribute("aria-label", "Open menu");
-        nav.classList.remove("is-open");
-        document.body.style.overflow = "";
-      });
-    });
+    // Focus management: move focus into view
+    const focusable = target.querySelector('button, a, [tabindex]');
+    if (focusable) focusable.focus({ preventScroll: true });
   }
 
-  // Header background on scroll
-  const header = document.querySelector(".header");
-  if (header) {
-    const onScroll = () => {
-      header.classList.toggle("is-scrolled", window.scrollY > 50);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-  }
+  // INFO button → menu
+  document.getElementById('btn-info')?.addEventListener('click', () => showView('menu'));
 
-  // Keyboard: close menu on Escape
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && nav?.classList.contains("is-open")) {
-      menuBtn.setAttribute("aria-expanded", "false");
-      menuBtn.setAttribute("aria-label", "Open menu");
-      nav.classList.remove("is-open");
-      document.body.style.overflow = "";
-      menuBtn.focus();
+  // Close button → home
+  document.getElementById('btn-close')?.addEventListener('click', () => showView('home'));
+
+  // Menu items → section
+  document.querySelectorAll('.menu-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const target = item.dataset.target;
+      if (target) showView(target);
+    });
+  });
+
+  // Back buttons
+  document.querySelectorAll('.back-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const back = btn.dataset.back || 'menu';
+      showView(back);
+    });
+  });
+
+  // About CTA → open-call
+  document.querySelectorAll('[data-target]').forEach(el => {
+    if (el.classList.contains('menu-item')) return; // already handled
+    el.addEventListener('click', () => {
+      const target = el.dataset.target;
+      if (target) showView(target);
+    });
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      if (current !== 'home' && current !== 'menu') {
+        showView('menu');
+      } else if (current === 'menu') {
+        showView('home');
+      }
     }
   });
 });
