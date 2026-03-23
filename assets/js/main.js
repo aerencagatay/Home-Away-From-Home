@@ -117,11 +117,8 @@ document.addEventListener('DOMContentLoaded', () => {
           throw new Error('Form backend not configured yet.');
         }
 
-        await fetch(SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          body: JSON.stringify(data)
-        });
+        // Submit via hidden form + iframe (bypasses CORS)
+        await submitViaForm(SCRIPT_URL, data);
 
         // Success
         applyForm.style.display = 'none';
@@ -143,6 +140,35 @@ document.addEventListener('DOMContentLoaded', () => {
       reader.onload = () => resolve(reader.result.split(',')[1]);
       reader.onerror = reject;
       reader.readAsDataURL(file);
+    });
+  }
+
+  function submitViaForm(url, data) {
+    return new Promise((resolve) => {
+      const iframe = document.createElement('iframe');
+      iframe.name = 'submit_iframe_' + Date.now();
+      iframe.style.display = 'none';
+      document.body.appendChild(iframe);
+
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = url;
+      form.target = iframe.name;
+
+      const field = document.createElement('input');
+      field.type = 'hidden';
+      field.name = 'payload';
+      field.value = JSON.stringify(data);
+      form.appendChild(field);
+
+      document.body.appendChild(form);
+      form.submit();
+
+      setTimeout(() => {
+        document.body.removeChild(form);
+        document.body.removeChild(iframe);
+        resolve();
+      }, 3000);
     });
   }
 });
