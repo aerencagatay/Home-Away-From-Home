@@ -976,49 +976,95 @@ html, body {
   transform: none;
 }
 
-/* ─── Open Call rows ─── */
+/* ─── Open Call redesign ─── */
+.oc-wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 3.5rem 3rem 5rem;
+  width: 100%;
+}
+
+.oc-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-bottom: 4rem;
+}
+
 .oc-rows {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
   border-top: 1px solid var(--border);
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .oc-row {
   display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: 1.5rem;
-  padding: 1.25rem 0;
+  grid-template-columns: 200px 1fr;
+  gap: 3rem;
+  padding: 2rem 0;
   border-bottom: 1px solid var(--border);
-  align-items: baseline;
+  align-items: start;
 }
 
 .oc-label {
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--muted);
+  padding-top: 0.3rem;
   flex-shrink: 0;
 }
 
-.oc-text {
-  font-size: 0.9375rem;
+.oc-val {
+  font-size: 1.0625rem;
   color: var(--text);
-  line-height: 1.65;
+  line-height: 1.75;
 }
 
-.oc-apply-btn {
-  display: inline-block;
-  margin-bottom: 1.5rem;
+.oc-row--deadline .oc-val {
+  color: var(--accent);
+  font-size: 1.3125rem;
+  letter-spacing: -0.01em;
 }
+
+.oc-link {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.oc-link:hover { color: var(--text); }
+
+.oc-cta {
+  display: block;
+  width: 100%;
+  background: var(--accent);
+  color: #111;
+  border: none;
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  padding: 1.5rem 2rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s ease;
+  margin-bottom: 2rem;
+}
+
+.oc-cta:hover { background: var(--accent-dk); }
+.oc-cta:active { transform: scale(0.995); }
 
 /* OC footer links */
 .oc-footer-links {
   display: flex;
   gap: 2rem;
-  margin-top: 0.5rem;
+  margin-top: 0;
 }
 
 /* ─── Advisory Board ─── */
@@ -1131,7 +1177,10 @@ html, body {
   .dimensions-row { grid-template-columns: repeat(2, 1fr); }
   .oc-footer-links { flex-direction: column; gap: 0.75rem; }
   .bio-panel { padding: 1.5rem 1.25rem 2.5rem; }
-  .oc-row { grid-template-columns: 1fr; gap: 0.35rem; }
+  .oc-wrap { padding: 2rem 1.5rem 4rem; }
+  .oc-heading { font-size: clamp(2.25rem, 10vw, 3rem); margin-bottom: 2.5rem; }
+  .oc-row { grid-template-columns: 1fr; gap: 0.4rem; padding: 1.25rem 0; }
+  .oc-label { padding-top: 0; }
   .board-layout { padding: 1.25rem 0 0; }
   .board-title { font-size: 1.75rem; margin-bottom: 1rem; }
   .board-grid { grid-template-columns: repeat(3, 1fr); overflow-x: auto; }
