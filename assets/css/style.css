@@ -244,6 +244,7 @@ html, body {
 .view-menu.active .menu-item:nth-child(1) { animation-delay: 0.08s; }
 .view-menu.active .menu-item:nth-child(2) { animation-delay: 0.18s; }
 .view-menu.active .menu-item:nth-child(3) { animation-delay: 0.28s; }
+.view-menu.active .menu-item:nth-child(4) { animation-delay: 0.38s; }
 
 @keyframes itemIn {
   from { opacity: 0; transform: translateY(18px); }
@@ -465,18 +466,51 @@ html, body {
   outline-offset: 3px;
 }
 
-/* ─── Contributors / Exhibition ─── */
-.contributors-heading {
+/* ─── Exhibition page ─── */
+.exhibition-meta {
+  font-size: 0.8rem;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  margin-top: 1.5rem;
   margin-bottom: 0.75rem;
 }
 
-.contributors-intro {
-  font-size: 0.9rem;
-  line-height: 1.75;
-  color: var(--muted);
-  margin-bottom: 1.5rem;
-  padding-top: 0.75rem;
+.exhibition-oc-link {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  text-decoration: none;
+  margin-bottom: 2.5rem;
+  transition: opacity 0.2s;
 }
+
+.exhibition-oc-link:hover { opacity: 0.7; }
+
+.contributors-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+.exhibition-board-link {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  text-decoration: none;
+  margin-top: 1.5rem;
+  transition: color 0.2s;
+}
+
+.exhibition-board-link:hover { color: var(--text); }
+
+/* ─── Contributors / Exhibition ─── */
 
 .contributor-list {
   display: flex;
@@ -942,20 +976,106 @@ html, body {
   transform: none;
 }
 
-/* Contributors intro */
-.contributors-intro {
-  font-size: 0.9rem;
-  line-height: 1.75;
+/* ─── Open Call rows ─── */
+.oc-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--border);
+  margin-bottom: 2rem;
+}
+
+.oc-row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 1.5rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--border);
+  align-items: baseline;
+}
+
+.oc-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   color: var(--muted);
+  flex-shrink: 0;
+}
+
+.oc-text {
+  font-size: 0.9375rem;
+  color: var(--text);
+  line-height: 1.65;
+}
+
+.oc-apply-btn {
+  display: inline-block;
   margin-bottom: 1.5rem;
-  padding-top: 0.75rem;
 }
 
 /* OC footer links */
 .oc-footer-links {
   display: flex;
   gap: 2rem;
-  margin-top: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+/* ─── Advisory Board ─── */
+.board-inner {
+  max-width: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.board-strip {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.board-strip::-webkit-scrollbar { display: none; }
+
+.board-member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  width: 180px;
+  transition: opacity 0.2s;
+}
+
+.board-member:hover { opacity: 0.75; }
+
+.board-member-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  text-align: center;
+  line-height: 1.3;
+}
+
+.board-member-photo {
+  width: 180px;
+  height: 240px;
+  background: var(--border);
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.board-member-role {
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
 }
 
 .oc-footer-link {
@@ -983,6 +1103,10 @@ html, body {
   .dimensions-row { grid-template-columns: repeat(2, 1fr); }
   .oc-footer-links { flex-direction: column; gap: 0.75rem; }
   .bio-panel { padding: 1.5rem 1.25rem 2.5rem; }
+  .oc-row { grid-template-columns: 1fr; gap: 0.35rem; }
+  .board-inner { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .board-member { width: 140px; }
+  .board-member-photo { width: 140px; height: 190px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

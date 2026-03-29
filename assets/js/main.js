@@ -55,7 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // data-target buttons (About CTA, OC apply btn, etc.)
   document.querySelectorAll('[data-target]').forEach(el => {
     if (el.classList.contains('menu-item')) return;
-    el.addEventListener('click', () => {
+    el.addEventListener('click', e => {
+      e.preventDefault();
       const target = el.dataset.target;
       if (target) showView(target);
     });

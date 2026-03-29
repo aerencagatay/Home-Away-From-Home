@@ -44,31 +44,12 @@
   <div class="view view-menu" id="view-menu" role="navigation" aria-label="Main navigation">
     <button class="close-btn" id="btn-close" aria-label="Close menu">×</button>
     <nav class="menu-nav">
-      <button class="menu-item" data-target="about" data-i18n="nav.about">About</button>
       <button class="menu-item" data-target="exhibition" data-i18n="nav.exhibition">Exhibition</button>
       <button class="menu-item" data-target="open-call" data-i18n="nav.openCall">Open Call</button>
+      <button class="menu-item" data-target="advisory-board" data-i18n="nav.advisoryBoard">Advisory Board</button>
       <button class="menu-item" data-target="contact" data-i18n="nav.contact">Contact</button>
     </nav>
     <p class="menu-footer">4–7 June 2026 · Milan</p>
-  </div>
-
-  <!-- ═══ ABOUT VIEW ═══ -->
-  <div class="view view-section" id="view-about">
-    <div class="section-bar">
-      <button class="back-btn" data-back="menu" aria-label="Back to menu">← BACK</button>
-      <button class="lang-toggle" type="button" aria-label="Switch language" data-lang-target="it">IT</button>
-    </div>
-    <div class="section-scroll">
-      <div class="section-inner">
-        <h2 class="section-title" data-i18n="about.title">About the Exhibition</h2>
-        <p class="about-text" data-i18n="about.text">
-          <em>Milano: Home Away From Home</em> explores what it means to build a life in a city that is not your own. Through the works of emerging artists who have experienced migration, displacement, or simply the quiet act of starting over, the exhibition transforms a WWII-era underground shelter into a space of reflection on belonging, identity, and the invisible ties that connect us to the places we call home — even temporarily. Set beneath Piazza Grandi in Milan, the venue itself carries the memory of shelter and refuge, echoing the journeys of the artists within.
-        </p>
-        <div class="about-cta">
-          <button class="btn btn-outline" data-target="open-call" data-i18n="hero.cta">Apply to the Open Call</button>
-        </div>
-      </div>
-    </div>
   </div>
 
   <!-- ═══ EXHIBITION VIEW ═══ -->
@@ -80,77 +61,95 @@
     <div class="section-scroll">
       <div class="section-inner">
 
-        <!-- Contributors section -->
-        <h2 class="section-title contributors-heading">The Team</h2>
-        <p class="contributors-intro">Milano: Home Away From Home is developed by a multidisciplinary team of cultural practitioners currently completing the Master in Arts Management and Administration (MAMA) at SDA Bocconi School of Management. Bringing together backgrounds in museum practice, cultural heritage, artistic research, operations, and cross-sector strategy, the team approaches exhibition-making as both a curatorial and managerial process.</p>
+        <h2 class="section-title">Exhibition</h2>
+        <p class="about-text">
+          <em>Milano: Home Away From Home</em> explores what it means to build a life in a city that is not your own. Through the works of emerging artists who have experienced migration, displacement, or simply the quiet act of starting over, the exhibition transforms a WWII-era underground shelter into a space of reflection on belonging, identity, and the invisible ties that connect us to the places we call home — even temporarily. Set beneath Piazza Grandi in Milan, the venue itself carries the memory of shelter and refuge, echoing the journeys of the artists within.
+        </p>
+        <p class="exhibition-meta">4–7 June 2026 · Rifugio Antiaereo di Piazza Grandi, Milan</p>
+        <a class="exhibition-oc-link" data-target="open-call" href="#">Apply to the Open Call →</a>
+
+        <p class="contributors-label">Contributors</p>
         <div class="contributor-list">
-          <div class="contributor-item" onclick="openBio('Lara Mercan Şahin', 'Production &amp; Programming')">
-<div class="contributor-info">
+          <div class="contributor-item" onclick="openBio('Lara Mercan Şahin', 'Co-Curator')">
+            <div class="contributor-info">
               <span class="contributor-name">Lara Mercan Şahin</span>
-              <span class="contributor-role">Production &amp; Programming</span>
+              <span class="contributor-role">Co-Curator</span>
             </div>
           </div>
-          <div class="contributor-item" onclick="openBio('Bethany Landrum', 'Strategy &amp; Operations')">
-<div class="contributor-info">
+          <div class="contributor-item" onclick="openBio('Bethany Landrum', 'Co-Curator')">
+            <div class="contributor-info">
               <span class="contributor-name">Bethany Landrum</span>
-              <span class="contributor-role">Strategy &amp; Operations</span>
+              <span class="contributor-role">Co-Curator</span>
             </div>
           </div>
-          <div class="contributor-item" onclick="openBio('Caroline Marie Duque', 'Curatorial Lead')">
-<div class="contributor-info">
+          <div class="contributor-item" onclick="openBio('Caroline Marie Duque', 'Co-Curator')">
+            <div class="contributor-info">
               <span class="contributor-name">Caroline Marie Duque</span>
-              <span class="contributor-role">Curatorial Lead</span>
+              <span class="contributor-role">Co-Curator</span>
             </div>
           </div>
-          <div class="contributor-item" onclick="openBio('Iona Anastassiadou', 'Research &amp; Communications')">
-<div class="contributor-info">
+          <div class="contributor-item" onclick="openBio('Iona Anastassiadou', 'Co-Curator')">
+            <div class="contributor-info">
               <span class="contributor-name">Iona Anastassiadou</span>
-              <span class="contributor-role">Research &amp; Communications</span>
+              <span class="contributor-role">Co-Curator</span>
             </div>
           </div>
-          <div class="contributor-item" onclick="openBio('Sneha Mahato', 'Design &amp; Creative Direction')">
-<div class="contributor-info">
+          <div class="contributor-item" onclick="openBio('Sneha Mahato', 'Co-Curator')">
+            <div class="contributor-info">
               <span class="contributor-name">Sneha Mahato</span>
-              <span class="contributor-role">Design &amp; Creative Direction</span>
+              <span class="contributor-role">Co-Curator</span>
             </div>
           </div>
         </div>
 
-        <!-- Advisory Board section -->
-        <h2 class="section-title" style="margin-top: 3rem;">Advisory Board</h2>
-        <div class="contributor-list">
-          <div class="contributor-item" onclick="openBio('Damiano Gulli', 'Curator of Contemporary Art, Triennale Milano')">
-<div class="contributor-info">
-              <span class="contributor-name">Damiano Gulli</span>
-              <span class="contributor-role">Curator of Contemporary Art, Triennale Milano</span>
-            </div>
-          </div>
-          <div class="contributor-item" onclick="openBio('Dr. Sharon Hecker', 'Art Historian, Curator &amp; Consultant')">
-<div class="contributor-info">
-              <span class="contributor-name">Dr. Sharon Hecker</span>
-              <span class="contributor-role">Art Historian, Curator &amp; Consultant</span>
-            </div>
-          </div>
-          <div class="contributor-item" onclick="openBio('Valentina Kovalishina', 'Artist, Art Director &amp; Founder')">
-<div class="contributor-info">
-              <span class="contributor-name">Valentina Kovalishina</span>
-              <span class="contributor-role">Artist, Art Director &amp; Founder</span>
-            </div>
-          </div>
-          <div class="contributor-item" onclick="openBio('Lorenzo Perini Natali', 'Collector &amp; Founder, Progetto Ludovico')">
-<div class="contributor-info">
-              <span class="contributor-name">Lorenzo Perini Natali</span>
-              <span class="contributor-role">Collector &amp; Founder, Progetto Ludovico</span>
-            </div>
-          </div>
-          <div class="contributor-item" onclick="openBio('Paula Trommel', 'Global Head of Risk &amp; Compliance, Hauser &amp; Wirth')">
-<div class="contributor-info">
-              <span class="contributor-name">Paula Trommel</span>
-              <span class="contributor-role">Global Head of Risk &amp; Compliance, Hauser &amp; Wirth</span>
-            </div>
-          </div>
-        </div>
+        <a class="exhibition-board-link" data-target="advisory-board" href="#">Advisory Board →</a>
 
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ ADVISORY BOARD VIEW ═══ -->
+  <div class="view view-section" id="view-advisory-board">
+    <div class="section-bar">
+      <button class="back-btn" data-back="menu" aria-label="Back to menu">← BACK</button>
+      <button class="lang-toggle" type="button" aria-label="Switch language" data-lang-target="it">IT</button>
+    </div>
+    <div class="section-scroll">
+      <div class="section-inner board-inner">
+        <h2 class="section-title">Advisory Board</h2>
+        <div class="board-strip">
+
+          <div class="board-member" onclick="openBio('Damiano Gulli', 'Curator of Contemporary Art, Triennale Milano')">
+            <span class="board-member-name">Damiano Gulli</span>
+            <div class="board-member-photo"></div>
+            <span class="board-member-role">Curator of Contemporary Art,<br>Triennale Milano</span>
+          </div>
+
+          <div class="board-member" onclick="openBio('Dr. Sharon Hecker', 'Art Historian, Curator &amp; Consultant')">
+            <span class="board-member-name">Dr. Sharon Hecker</span>
+            <div class="board-member-photo"></div>
+            <span class="board-member-role">Art Historian,<br>Curator &amp; Consultant</span>
+          </div>
+
+          <div class="board-member" onclick="openBio('Valentina Kovalishina', 'Artist, Art Director &amp; Founder')">
+            <span class="board-member-name">Valentina Kovalishina</span>
+            <div class="board-member-photo"></div>
+            <span class="board-member-role">Artist, Art Director<br>&amp; Founder</span>
+          </div>
+
+          <div class="board-member" onclick="openBio('Lorenzo Perini Natali', 'Collector &amp; Founder, Progetto Ludovico')">
+            <span class="board-member-name">Lorenzo Perini Natali</span>
+            <div class="board-member-photo"></div>
+            <span class="board-member-role">Collector &amp; Founder,<br>Progetto Ludovico</span>
+          </div>
+
+          <div class="board-member" onclick="openBio('Paula Trommel', 'Global Head of Risk &amp; Compliance, Hauser &amp; Wirth')">
+            <span class="board-member-name">Paula Trommel</span>
+            <div class="board-member-photo"></div>
+            <span class="board-member-role">Global Head of Risk &amp; Compliance,<br>Hauser &amp; Wirth</span>
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
@@ -174,24 +173,30 @@
     </div>
     <div class="section-scroll">
       <div class="section-inner">
-        <h2 class="section-title" data-i18n="openCall.title">Open Call for Artists</h2>
-        <div class="call-grid">
-          <div class="call-card">
-            <p class="call-card-label" data-i18n="openCall.whoTitle">Who Can Apply</p>
-            <p data-i18n="openCall.whoText">Emerging artists (18+) with experience living outside their home country or city, whose journey has crossed paths with Milan at some point.</p>
+        <h2 class="section-title">Open Call</h2>
+        <div class="oc-rows">
+          <div class="oc-row">
+            <span class="oc-label">Who Can Apply</span>
+            <p class="oc-text">Emerging artists (18+) with experience living outside their home country or city, whose journey has crossed paths with Milan at some point.</p>
           </div>
-          <div class="call-card">
-            <p class="call-card-label" data-i18n="openCall.whatTitle">What to Submit</p>
-            <p data-i18n="openCall.whatText">Up to 3 works (existing or new) via the application form. All mediums are welcome.</p>
+          <div class="oc-row">
+            <span class="oc-label">What to Submit</span>
+            <p class="oc-text">Up to 3 works (existing or new) via the application form. All mediums are welcome.</p>
           </div>
-          <div class="call-card">
-            <p class="call-card-label" data-i18n="openCall.deadlineTitle">Deadline</p>
-            <p data-i18n="openCall.deadlineText">To be announced. Follow us for updates.</p>
+          <div class="oc-row">
+            <span class="oc-label">Deadline</span>
+            <p class="oc-text">To be announced. Follow us for updates.</p>
+          </div>
+          <div class="oc-row">
+            <span class="oc-label">Venue</span>
+            <p class="oc-text">Rifugio Antiaereo di Piazza Grandi, Milan</p>
+          </div>
+          <div class="oc-row">
+            <span class="oc-label">Dates</span>
+            <p class="oc-text">4–7 June 2026</p>
           </div>
         </div>
-        <div class="call-actions">
-          <button class="btn btn-primary oc-apply-btn" data-target="apply">Apply to the Open Call</button>
-        </div>
+        <button class="btn btn-primary oc-apply-btn" data-target="apply">Apply to the Open Call</button>
         <div class="oc-footer-links">
           <a href="#" class="oc-footer-link">Guidelines &amp; Terms ↗</a>
           <a href="#" class="oc-footer-link">Privacy Policy ↗</a>
