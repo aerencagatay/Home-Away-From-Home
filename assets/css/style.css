@@ -624,6 +624,68 @@ html, body {
   .oc-scroll { overflow-y: auto; }
 }
 
+/* ─── ART ADVISORY BOARD ─── */
+.board-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  margin-top: 2.5rem;
+}
+
+.board-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 160px;
+}
+
+.board-photo-wrap {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+.board-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.board-name {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--text);
+  text-align: center;
+  letter-spacing: -0.01em;
+}
+
+.board-linkedin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  background: #0A66C2;
+  color: #fff;
+  transition: opacity 0.2s ease;
+  text-decoration: none;
+}
+
+.board-linkedin:hover { opacity: 0.8; }
+
+.linkedin-icon {
+  width: 18px;
+  height: 18px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .view { transition: none; }
   .menu-item { animation: none !important; opacity: 1 !important; }
