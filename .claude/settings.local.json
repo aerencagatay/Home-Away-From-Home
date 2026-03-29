@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp \"c:\\\\Users\\\\ahmet\\\\Downloads\\\\Home-Away-From-Home-main\\\\Home-Away-From-Home-main\\\\index.html\" \"c:\\\\Users\\\\ahmet\\\\Downloads\\\\Home-Away-From-Home-main\\\\index.html\")",
+      "Bash(cp \"c:\\\\Users\\\\ahmet\\\\Downloads\\\\Home-Away-From-Home-main\\\\Home-Away-From-Home-main\\\\assets\\\\css\\\\style.css\" \"c:\\\\Users\\\\ahmet\\\\Downloads\\\\Home-Away-From-Home-main\\\\assets\\\\css\\\\style.css\")",
+      "Bash(cp \"c:\\\\Users\\\\ahmet\\\\Downloads\\\\Home-Away-From-Home-main\\\\Home-Away-From-Home-main\\\\assets\\\\js\\\\main.js\" \"c:\\\\Users\\\\ahmet\\\\Downloads\\\\Home-Away-From-Home-main\\\\assets\\\\js\\\\main.js\")",
+      "Bash(cp \"c:\\\\Users\\\\ahmet\\\\Downloads\\\\Home-Away-From-Home-main\\\\Home-Away-From-Home-main\\\\assets\\\\js\\\\i18n.js\" \"c:\\\\Users\\\\ahmet\\\\Downloads\\\\Home-Away-From-Home-main\\\\assets\\\\js\\\\i18n.js\")",
+      "Bash(cp \"Home-Away-From-Home-main/index.html\" index.html)",
+      "Bash(cp \"Home-Away-From-Home-main/assets/css/style.css\" assets/css/style.css)",
+      "Bash(cp \"Home-Away-From-Home-main/assets/js/main.js\" assets/js/main.js)",
+      "Bash(cp -r \"Home-Away-From-Home-main/.\" .)",
+      "Bash(rm -rf \"Home-Away-From-Home-main\")"
+    ]
+  }
+}
