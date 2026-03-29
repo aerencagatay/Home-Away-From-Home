@@ -109,47 +109,55 @@
   </div>
 
   <!-- ═══ ADVISORY BOARD VIEW ═══ -->
-  <div class="view view-section" id="view-advisory-board">
+  <div class="view view-section view-board" id="view-advisory-board">
     <div class="section-bar">
       <button class="back-btn" data-back="menu" aria-label="Back to menu">← BACK</button>
       <button class="lang-toggle" type="button" aria-label="Switch language" data-lang-target="it">IT</button>
     </div>
-    <div class="section-scroll">
-      <div class="section-inner board-inner">
-        <h2 class="section-title">Advisory Board</h2>
-        <div class="board-strip">
+    <div class="board-layout">
+      <h2 class="board-title">Advisory Board</h2>
+      <div class="board-grid">
 
-          <div class="board-member" onclick="openBio('Damiano Gulli', 'Curator of Contemporary Art, Triennale Milano')">
-            <span class="board-member-name">Damiano Gulli</span>
-            <div class="board-member-photo"></div>
-            <span class="board-member-role">Curator of Contemporary Art,<br>Triennale Milano</span>
+        <div class="board-card" onclick="openBio('Damiano Gulli', 'Curator of Contemporary Art, Triennale Milano')">
+          <div class="board-card-text">
+            <span class="board-card-name">Damiano Gulli</span>
+            <span class="board-card-role">Curator of Contemporary Art, Triennale Milano</span>
           </div>
-
-          <div class="board-member" onclick="openBio('Dr. Sharon Hecker', 'Art Historian, Curator &amp; Consultant')">
-            <span class="board-member-name">Dr. Sharon Hecker</span>
-            <div class="board-member-photo"></div>
-            <span class="board-member-role">Art Historian,<br>Curator &amp; Consultant</span>
-          </div>
-
-          <div class="board-member" onclick="openBio('Valentina Kovalishina', 'Artist, Art Director &amp; Founder')">
-            <span class="board-member-name">Valentina Kovalishina</span>
-            <div class="board-member-photo"></div>
-            <span class="board-member-role">Artist, Art Director<br>&amp; Founder</span>
-          </div>
-
-          <div class="board-member" onclick="openBio('Lorenzo Perini Natali', 'Collector &amp; Founder, Progetto Ludovico')">
-            <span class="board-member-name">Lorenzo Perini Natali</span>
-            <div class="board-member-photo"></div>
-            <span class="board-member-role">Collector &amp; Founder,<br>Progetto Ludovico</span>
-          </div>
-
-          <div class="board-member" onclick="openBio('Paula Trommel', 'Global Head of Risk &amp; Compliance, Hauser &amp; Wirth')">
-            <span class="board-member-name">Paula Trommel</span>
-            <div class="board-member-photo"></div>
-            <span class="board-member-role">Global Head of Risk &amp; Compliance,<br>Hauser &amp; Wirth</span>
-          </div>
-
+          <div class="board-card-photo board-card-photo--placeholder"></div>
         </div>
+
+        <div class="board-card" onclick="openBio('Dr. Sharon Hecker', 'Art Historian, Curator &amp; Consultant')">
+          <div class="board-card-text">
+            <span class="board-card-name">Dr. Sharon Hecker</span>
+            <span class="board-card-role">Art Historian, Curator &amp; Consultant</span>
+          </div>
+          <img class="board-card-photo" src="assets/images/SHARON%20HECKER%20PHOTO.jpg" alt="Dr. Sharon Hecker">
+        </div>
+
+        <div class="board-card" onclick="openBio('Valentina Kovalishina', 'Artist, Art Director &amp; Founder')">
+          <div class="board-card-text">
+            <span class="board-card-name">Valentina Kovalishina</span>
+            <span class="board-card-role">Artist, Art Director &amp; Founder</span>
+          </div>
+          <div class="board-card-photo board-card-photo--placeholder"></div>
+        </div>
+
+        <div class="board-card" onclick="openBio('Lorenzo Perini Natali', 'Collector &amp; Founder, Progetto Ludovico')">
+          <div class="board-card-text">
+            <span class="board-card-name">Lorenzo Perini Natali</span>
+            <span class="board-card-role">Collector &amp; Founder, Progetto Ludovico</span>
+          </div>
+          <div class="board-card-photo board-card-photo--placeholder"></div>
+        </div>
+
+        <div class="board-card" onclick="openBio('Paula Trommel', 'Global Head of Risk &amp; Compliance, Hauser &amp; Wirth')">
+          <div class="board-card-text">
+            <span class="board-card-name">Paula Trommel</span>
+            <span class="board-card-role">Global Head of Risk &amp; Compliance, Hauser &amp; Wirth</span>
+          </div>
+          <img class="board-card-photo" src="assets/images/PAULA%20TROMMEL%20PHOTO.jpg" alt="Paula Trommel">
+        </div>
+
       </div>
     </div>
   </div>
