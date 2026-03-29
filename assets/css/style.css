@@ -527,73 +527,66 @@ html, body {
 .bio-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.75);
+  background: var(--bg);
   z-index: 200;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  overflow-y: auto;
 }
 
 .bio-overlay[hidden] { display: none; }
 
-.bio-panel {
-  background: #111;
-  width: 100%;
-  max-width: 680px;
-  max-height: 80vh;
-  overflow-y: auto;
-  border-radius: 12px;
-  padding: 2rem 2rem 3rem;
-  position: relative;
-}
-
 .bio-close {
-  position: absolute;
-  top: 1.25rem;
-  right: 1.5rem;
+  position: fixed;
+  top: 1.75rem;
+  right: 2rem;
   background: none;
   border: none;
-  font-size: 1.75rem;
+  font-size: 2rem;
   font-weight: 200;
   color: var(--muted);
   cursor: pointer;
   line-height: 1;
   padding: 0.25rem;
   transition: color 0.2s;
+  z-index: 201;
 }
 
 .bio-close:hover { color: var(--text); }
 
-.bio-photo-wrap {
-  margin-bottom: 1.25rem;
-}
-
-.bio-photo {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background-color: var(--border);
-  background-size: cover;
-  background-position: center;
+.bio-panel {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 5rem 2rem 4rem;
 }
 
 .bio-name {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 400;
+  font-style: italic;
   color: var(--text);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
 .bio-role {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
   color: var(--muted);
-  margin-bottom: 1.25rem;
-  letter-spacing: 0.02em;
+  margin-bottom: 2rem;
+}
+
+.bio-rule {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin-bottom: 2rem;
 }
 
 .bio-text {
-  font-size: 0.9rem;
-  line-height: 1.8;
+  font-size: 1rem;
+  line-height: 1.85;
   color: var(--muted);
   white-space: pre-line;
 }

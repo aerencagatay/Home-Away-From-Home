@@ -55,8 +55,8 @@
   <!-- ═══ ABOUT VIEW ═══ -->
   <div class="view view-section" id="view-about">
     <div class="section-bar">
-      <button class="back-btn" data-back="menu" aria-label="Back to menu">← Back</button>
-      <span class="section-label" data-i18n="nav.about">About</span>
+      <button class="back-btn" data-back="menu" aria-label="Back to menu">← BACK</button>
+      <button class="lang-toggle" type="button" aria-label="Switch language" data-lang-target="it">IT</button>
     </div>
     <div class="section-scroll">
       <div class="section-inner">
@@ -74,8 +74,8 @@
   <!-- ═══ EXHIBITION VIEW ═══ -->
   <div class="view view-section" id="view-exhibition">
     <div class="section-bar">
-      <button class="back-btn" data-back="menu" aria-label="Back to menu">← Back</button>
-      <span class="section-label">Exhibition</span>
+      <button class="back-btn" data-back="menu" aria-label="Back to menu">← BACK</button>
+      <button class="lang-toggle" type="button" aria-label="Switch language" data-lang-target="it">IT</button>
     </div>
     <div class="section-scroll">
       <div class="section-inner">
@@ -85,36 +85,31 @@
         <p class="contributors-intro">Milano: Home Away From Home is developed by a multidisciplinary team of cultural practitioners currently completing the Master in Arts Management and Administration (MAMA) at SDA Bocconi School of Management. Bringing together backgrounds in museum practice, cultural heritage, artistic research, operations, and cross-sector strategy, the team approaches exhibition-making as both a curatorial and managerial process.</p>
         <div class="contributor-list">
           <div class="contributor-item" onclick="openBio('Lara Mercan Şahin', 'Production &amp; Programming')">
-            <div class="contributor-photo" style="background-color: var(--border);"></div>
-            <div class="contributor-info">
+<div class="contributor-info">
               <span class="contributor-name">Lara Mercan Şahin</span>
               <span class="contributor-role">Production &amp; Programming</span>
             </div>
           </div>
           <div class="contributor-item" onclick="openBio('Bethany Landrum', 'Strategy &amp; Operations')">
-            <div class="contributor-photo" style="background-color: var(--border);"></div>
-            <div class="contributor-info">
+<div class="contributor-info">
               <span class="contributor-name">Bethany Landrum</span>
               <span class="contributor-role">Strategy &amp; Operations</span>
             </div>
           </div>
           <div class="contributor-item" onclick="openBio('Caroline Marie Duque', 'Curatorial Lead')">
-            <div class="contributor-photo" style="background-color: var(--border);"></div>
-            <div class="contributor-info">
+<div class="contributor-info">
               <span class="contributor-name">Caroline Marie Duque</span>
               <span class="contributor-role">Curatorial Lead</span>
             </div>
           </div>
           <div class="contributor-item" onclick="openBio('Iona Anastassiadou', 'Research &amp; Communications')">
-            <div class="contributor-photo" style="background-color: var(--border);"></div>
-            <div class="contributor-info">
+<div class="contributor-info">
               <span class="contributor-name">Iona Anastassiadou</span>
               <span class="contributor-role">Research &amp; Communications</span>
             </div>
           </div>
           <div class="contributor-item" onclick="openBio('Sneha Mahato', 'Design &amp; Creative Direction')">
-            <div class="contributor-photo" style="background-color: var(--border);"></div>
-            <div class="contributor-info">
+<div class="contributor-info">
               <span class="contributor-name">Sneha Mahato</span>
               <span class="contributor-role">Design &amp; Creative Direction</span>
             </div>
@@ -125,36 +120,31 @@
         <h2 class="section-title" style="margin-top: 3rem;">Advisory Board</h2>
         <div class="contributor-list">
           <div class="contributor-item" onclick="openBio('Damiano Gulli', 'Curator of Contemporary Art, Triennale Milano')">
-            <div class="contributor-photo" style="background-color: var(--border);"></div>
-            <div class="contributor-info">
+<div class="contributor-info">
               <span class="contributor-name">Damiano Gulli</span>
               <span class="contributor-role">Curator of Contemporary Art, Triennale Milano</span>
             </div>
           </div>
           <div class="contributor-item" onclick="openBio('Dr. Sharon Hecker', 'Art Historian, Curator &amp; Consultant')">
-            <div class="contributor-photo" style="background-image: url('assets/images/sharon-hecker.png'); background-size: cover; background-position: center;"></div>
-            <div class="contributor-info">
+<div class="contributor-info">
               <span class="contributor-name">Dr. Sharon Hecker</span>
               <span class="contributor-role">Art Historian, Curator &amp; Consultant</span>
             </div>
           </div>
           <div class="contributor-item" onclick="openBio('Valentina Kovalishina', 'Artist, Art Director &amp; Founder')">
-            <div class="contributor-photo" style="background-color: var(--border);"></div>
-            <div class="contributor-info">
+<div class="contributor-info">
               <span class="contributor-name">Valentina Kovalishina</span>
               <span class="contributor-role">Artist, Art Director &amp; Founder</span>
             </div>
           </div>
           <div class="contributor-item" onclick="openBio('Lorenzo Perini Natali', 'Collector &amp; Founder, Progetto Ludovico')">
-            <div class="contributor-photo" style="background-color: var(--border);"></div>
-            <div class="contributor-info">
+<div class="contributor-info">
               <span class="contributor-name">Lorenzo Perini Natali</span>
               <span class="contributor-role">Collector &amp; Founder, Progetto Ludovico</span>
             </div>
           </div>
           <div class="contributor-item" onclick="openBio('Paula Trommel', 'Global Head of Risk &amp; Compliance, Hauser &amp; Wirth')">
-            <div class="contributor-photo" style="background-color: var(--border);"></div>
-            <div class="contributor-info">
+<div class="contributor-info">
               <span class="contributor-name">Paula Trommel</span>
               <span class="contributor-role">Global Head of Risk &amp; Compliance, Hauser &amp; Wirth</span>
             </div>
@@ -167,13 +157,11 @@
 
   <!-- ═══ BIO OVERLAY ═══ -->
   <div class="bio-overlay" id="bio-overlay" hidden>
-    <div class="bio-panel" role="dialog" aria-modal="true" aria-labelledby="bio-name">
-      <button class="bio-close" id="bio-close" aria-label="Close bio">×</button>
-      <div class="bio-photo-wrap">
-        <div class="bio-photo" id="bio-photo"></div>
-      </div>
-      <h3 class="bio-name" id="bio-name"></h3>
+    <button class="bio-close" id="bio-close" aria-label="Close bio">×</button>
+    <div class="bio-panel">
+      <h2 class="bio-name" id="bio-name"></h2>
       <p class="bio-role" id="bio-role"></p>
+      <hr class="bio-rule">
       <div class="bio-text"></div>
     </div>
   </div>
@@ -181,8 +169,8 @@
   <!-- ═══ OPEN CALL VIEW ═══ -->
   <div class="view view-section" id="view-open-call">
     <div class="section-bar">
-      <button class="back-btn" data-back="menu" aria-label="Back to menu">← Back</button>
-      <span class="section-label" data-i18n="nav.openCall">Open Call</span>
+      <button class="back-btn" data-back="menu" aria-label="Back to menu">← BACK</button>
+      <button class="lang-toggle" type="button" aria-label="Switch language" data-lang-target="it">IT</button>
     </div>
     <div class="section-scroll">
       <div class="section-inner">
@@ -215,8 +203,9 @@
   <!-- ═══ APPLY VIEW ═══ -->
   <div class="view view-section" id="view-apply">
     <div class="section-bar">
-      <button class="back-btn" data-back="open-call" aria-label="Back to Open Call">← Back</button>
-      <span class="section-label">Apply</span>
+      <button class="back-btn" data-back="open-call" aria-label="Back to Open Call">← BACK</button>
+      <span class="section-label">Application</span>
+      <button class="lang-toggle" type="button" aria-label="Switch language" data-lang-target="it">IT</button>
     </div>
     <div class="section-scroll">
       <div class="section-inner apply-inner">
@@ -318,8 +307,8 @@
   <!-- ═══ CONTACT VIEW ═══ -->
   <div class="view view-section" id="view-contact">
     <div class="section-bar">
-      <button class="back-btn" data-back="menu" aria-label="Back to menu">← Back</button>
-      <span class="section-label" data-i18n="nav.contact">Contact</span>
+      <button class="back-btn" data-back="menu" aria-label="Back to menu">← BACK</button>
+      <button class="lang-toggle" type="button" aria-label="Switch language" data-lang-target="it">IT</button>
     </div>
     <div class="section-scroll">
       <div class="section-inner">
