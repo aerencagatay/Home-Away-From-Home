@@ -13,21 +13,18 @@
   <!-- ═══ HOME VIEW ═══ -->
   <div class="view view-home active" id="view-home">
 
-    <!-- Saffron header band -->
     <div class="home-band">
       <span class="home-band-title">Home Away From Home</span>
-      <button class="lang-toggle" type="button" aria-label="Switch language" data-lang-target="it">IT</button>
+      <div class="band-right">
+        <button class="lang-toggle" type="button" aria-label="Switch language" data-lang-target="it">IT</button>
+        <button class="hamburger-btn" id="btn-info" aria-label="Open navigation">
+          <!-- Logo/hamburger to be added -->
+        </button>
+      </div>
     </div>
 
-    <!-- Top-right: INFO button -->
-    <button class="info-btn" id="btn-info" aria-label="Open navigation">
-      <span>Info</span>
-      <span class="info-plus" aria-hidden="true">+</span>
-    </button>
-
-    <!-- Centered content -->
     <div class="home-center">
-      <p class="tagline" data-i18n="hero.tagline">A Contemporary Art Exhibition</p>
+      <p class="tagline">A Contemporary Art Exhibition</p>
       <h1 class="home-title">
         <span class="title-city">Milano</span>
       </h1>
@@ -44,27 +41,121 @@
   <div class="view view-menu" id="view-menu" role="navigation" aria-label="Main navigation">
     <button class="close-btn" id="btn-close" aria-label="Close menu">×</button>
     <nav class="menu-nav">
-      <button class="menu-item" data-target="about" data-i18n="nav.about">About</button>
-      <button class="menu-item" data-target="open-call" data-i18n="nav.openCall">Open Call</button>
-      <button class="menu-item" data-target="contact" data-i18n="nav.contact">Contact</button>
+      <button class="menu-item" data-target="exhibition">Exhibition</button>
+      <button class="menu-item" data-target="open-call">Open Call</button>
+      <button class="menu-item" data-target="advisory-board">Advisory Board</button>
+      <button class="menu-item" data-target="contact">Contact</button>
     </nav>
     <p class="menu-footer">4–7 June 2026 · Milan</p>
   </div>
 
-  <!-- ═══ ABOUT VIEW ═══ -->
-  <div class="view view-section" id="view-about">
+  <!-- ═══ EXHIBITION VIEW ═══ -->
+  <div class="view view-section" id="view-exhibition">
     <div class="section-bar">
       <button class="back-btn" data-back="menu" aria-label="Back to menu">← Back</button>
-      <span class="section-label" data-i18n="nav.about">About</span>
     </div>
     <div class="section-scroll">
       <div class="section-inner">
-        <h2 class="section-title" data-i18n="about.title">About the Exhibition</h2>
-        <p class="about-text" data-i18n="about.text">
+        <h2 class="section-title">Exhibition</h2>
+        <p class="about-text">
           <em>Milano: Home Away From Home</em> explores what it means to build a life in a city that is not your own. Through the works of emerging artists who have experienced migration, displacement, or simply the quiet act of starting over, the exhibition transforms a WWII-era underground shelter into a space of reflection on belonging, identity, and the invisible ties that connect us to the places we call home — even temporarily. Set beneath Piazza Grandi in Milan, the venue itself carries the memory of shelter and refuge, echoing the journeys of the artists within.
         </p>
         <div class="about-cta">
-          <button class="btn btn-outline" data-target="open-call" data-i18n="hero.cta">Apply to the Open Call</button>
+          <button class="accent-link" data-target="apply">Apply to the Open Call →</button>
+        </div>
+
+        <div class="contributors-section">
+          <p class="contributors-heading">Contributors</p>
+          <div class="contributor-list">
+            <div class="contributor-row" data-bio-name="Bethany Landrum" data-bio-role="Co-Curator">
+              <div class="contributor-info">
+                <span class="contributor-name">Bethany Landrum</span>
+                <span class="contributor-role">Co-Curator</span>
+              </div>
+              <span class="contributor-arrow">→</span>
+            </div>
+            <div class="contributor-row" data-bio-name="Caroline Marie Duque" data-bio-role="Co-Curator">
+              <div class="contributor-info">
+                <span class="contributor-name">Caroline Marie Duque</span>
+                <span class="contributor-role">Co-Curator</span>
+              </div>
+              <span class="contributor-arrow">→</span>
+            </div>
+            <div class="contributor-row" data-bio-name="Iona Anastassiadou" data-bio-role="Co-Curator">
+              <div class="contributor-info">
+                <span class="contributor-name">Iona Anastassiadou</span>
+                <span class="contributor-role">Co-Curator</span>
+              </div>
+              <span class="contributor-arrow">→</span>
+            </div>
+            <div class="contributor-row" data-bio-name="Lara Mercan Şahin" data-bio-role="Co-Curator">
+              <div class="contributor-info">
+                <span class="contributor-name">Lara Mercan Şahin</span>
+                <span class="contributor-role">Co-Curator</span>
+              </div>
+              <span class="contributor-arrow">→</span>
+            </div>
+            <div class="contributor-row" data-bio-name="Sneha Mahato" data-bio-role="Co-Curator">
+              <div class="contributor-info">
+                <span class="contributor-name">Sneha Mahato</span>
+                <span class="contributor-role">Co-Curator</span>
+              </div>
+              <span class="contributor-arrow">→</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="advisory-link-wrap">
+          <button class="muted-link" data-target="advisory-board">Advisory Board →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ ADVISORY BOARD VIEW ═══ -->
+  <div class="view view-section" id="view-advisory-board">
+    <div class="section-bar">
+      <button class="back-btn" data-back="menu" aria-label="Back to menu">← Back</button>
+    </div>
+    <div class="section-scroll">
+      <div class="section-inner board-inner">
+        <h2 class="section-title">Advisory Board</h2>
+        <div class="board-strip">
+          <div class="board-member" data-bio-name="To be announced" data-bio-role="To be updated">
+            <div class="member-text">
+              <span class="member-name">To be announced</span>
+              <span class="member-title">To be updated</span>
+            </div>
+            <div class="member-photo"></div>
+          </div>
+          <div class="board-member" data-bio-name="Dr. Sharon Hecker" data-bio-role="Art Historian, Curator & Consultant">
+            <div class="member-text">
+              <span class="member-name">Dr. Sharon Hecker</span>
+              <span class="member-title">Art Historian, Curator & Consultant</span>
+            </div>
+            <div class="member-photo"></div>
+          </div>
+          <div class="board-member" data-bio-name="Valentina Kovalishina" data-bio-role="Artist, Art Director & Founder">
+            <div class="member-text">
+              <span class="member-name">Valentina Kovalishina</span>
+              <span class="member-title">Artist, Art Director & Founder</span>
+            </div>
+            <div class="member-photo"></div>
+          </div>
+          <div class="board-member" data-bio-name="To be announced" data-bio-role="To be updated">
+            <div class="member-text">
+              <span class="member-name">To be announced</span>
+              <span class="member-title">To be updated</span>
+            </div>
+            <div class="member-photo"></div>
+          </div>
+          <div class="board-member" data-bio-name="Paula Trommel" data-bio-role="Global Head of Risk & Compliance, Hauser & Wirth">
+            <div class="member-text">
+              <span class="member-name">Paula Trommel</span>
+              <span class="member-title">Global Head of Risk & Compliance, Hauser & Wirth</span>
+            </div>
+            <div class="member-photo"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -74,57 +165,29 @@
   <div class="view view-section" id="view-open-call">
     <div class="section-bar">
       <button class="back-btn" data-back="menu" aria-label="Back to menu">← Back</button>
-      <span class="section-label" data-i18n="nav.openCall">Open Call</span>
     </div>
-    <div class="section-scroll">
-      <div class="section-inner">
-        <h2 class="section-title" data-i18n="openCall.title">Open Call for Artists</h2>
-        <div class="call-grid">
-          <div class="call-card">
-            <p class="call-card-label" data-i18n="openCall.whoTitle">Who Can Apply</p>
-            <p data-i18n="openCall.whoText">Emerging artists (18+) with experience living outside their home country or city, whose journey has crossed paths with Milan at some point.</p>
+    <div class="section-scroll oc-scroll">
+      <div class="oc-inner">
+        <h2 class="oc-title">Open Call<br>for Artists</h2>
+        <div class="oc-rows">
+          <div class="oc-row">
+            <span class="oc-label">Who Can Apply</span>
+            <span class="oc-value">Artists at the start of their career who have lived, studied, or worked in Milan at some point. Still in the city or based somewhere else in the world. Must be at least 18 years old.</span>
           </div>
-          <div class="call-card">
-            <p class="call-card-label" data-i18n="openCall.whatTitle">What to Submit</p>
-            <p data-i18n="openCall.whatText">Up to 3 works (existing or new) via the Google Forms application. All mediums are welcome.</p>
+          <div class="oc-row">
+            <span class="oc-label">What to Submit</span>
+            <span class="oc-value">Up to 3 works, existing or new. All mediums welcome.</span>
           </div>
-          <div class="call-card">
-            <p class="call-card-label" data-i18n="openCall.deadlineTitle">Deadline</p>
-            <p data-i18n="openCall.deadlineText">To be announced. Follow us for updates.</p>
+          <div class="oc-row">
+            <span class="oc-label">Deadline</span>
+            <span class="oc-value oc-accent">26 April 2026 · 23:59</span>
+          </div>
+          <div class="oc-row">
+            <span class="oc-label">Exhibition</span>
+            <span class="oc-value">4–7 June 2026 · Rifugio Antiaereo · Piazza Grandi, Milan</span>
           </div>
         </div>
-        <div class="call-actions">
-          <button class="btn btn-primary" data-target="apply" data-i18n="openCall.applyBtn">Apply to the Open Call</button>
-          <a href="#" class="btn btn-outline" target="_blank" rel="noopener noreferrer" data-i18n="openCall.guidelinesBtn">Full Guidelines &amp; Terms</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ CONTACT VIEW ═══ -->
-  <div class="view view-section" id="view-contact">
-    <div class="section-bar">
-      <button class="back-btn" data-back="menu" aria-label="Back to menu">← Back</button>
-      <span class="section-label" data-i18n="nav.contact">Contact</span>
-    </div>
-    <div class="section-scroll">
-      <div class="section-inner">
-        <h2 class="section-title" data-i18n="contact.title">Contact</h2>
-        <div class="contact-list">
-          <div class="contact-item">
-            <h3 data-i18n="contact.artistsTitle">Artists</h3>
-            <a href="mailto:artists@example.com">artists@example.com</a>
-          </div>
-          <div class="contact-item">
-            <h3 data-i18n="contact.pressTitle">Press</h3>
-            <a href="mailto:press@example.com">press@example.com</a>
-          </div>
-          <div class="contact-item">
-            <h3 data-i18n="contact.partnersTitle">Partners &amp; Sponsors</h3>
-            <a href="mailto:partners@example.com">partners@example.com</a>
-          </div>
-        </div>
-        <p class="contact-note">&copy; 2026 Milano: Home Away From Home</p>
+        <button class="btn btn-primary oc-apply-btn" data-target="apply">APPLY</button>
       </div>
     </div>
   </div>
@@ -133,66 +196,108 @@
   <div class="view view-section" id="view-apply">
     <div class="section-bar">
       <button class="back-btn" data-back="open-call" aria-label="Back">← Back</button>
-      <span class="section-label" data-i18n="openCall.applyBtn">Application</span>
+      <span class="section-label">Application</span>
     </div>
     <div class="section-scroll">
-      <div class="apply-layout">
+      <div class="apply-wrap">
 
-        <!-- Left info panel -->
-        <div class="apply-info">
-          <h2 class="apply-title">Open Call<br>Application</h2>
-          <div class="apply-deadline-badge">
-            <span>Final Deadline:</span>
-            <strong>1 May, 2026</strong>
-          </div>
-          <div class="apply-fee">
-            <span class="fee-amount">55€</span>
-            <span class="fee-label">General</span>
-          </div>
-        </div>
+        <form class="apply-form" id="apply-form" novalidate>
 
-        <!-- Right form panel -->
-        <div class="apply-form-wrap">
-          <p class="apply-intro">Join the community and be part of the upcoming exhibition in June 2026!</p>
-
-          <form class="apply-form" id="apply-form" novalidate>
-            <div class="form-grid">
-              <input type="text" name="name" placeholder="Name, Surname" required>
-              <input type="url" name="website" placeholder="Website">
-              <input type="text" name="dob" placeholder="Date of Birth" onfocus="this.type='date'" onblur="if(!this.value)this.type='text'" required>
-              <input type="text" name="instagram" placeholder="Instagram">
-              <input type="email" name="email" placeholder="Email" required>
-              <label class="upload-field">
-                <input type="file" name="cv" accept=".pdf,.doc,.docx" hidden>
-                <span class="upload-name">CV</span>
-                <span class="upload-plus">+</span>
-              </label>
-              <input type="text" name="address" placeholder="Address">
-              <label class="upload-field">
-                <input type="file" name="portrait" accept="image/*" hidden>
-                <span class="upload-name">Portrait Photo</span>
-                <span class="upload-plus">+</span>
-              </label>
+          <!-- 1. About you -->
+          <div class="form-section">
+            <h3 class="form-section-title">About you</h3>
+            <div class="form-grid-2">
+              <input type="text" name="firstName" placeholder="First name *" required>
+              <input type="text" name="lastName" placeholder="Last name *" required>
+              <input type="email" name="email" placeholder="Email *" required>
               <input type="tel" name="phone" placeholder="Phone">
-              <label class="upload-field">
+            </div>
+            <input type="url" name="website" placeholder="Website" class="form-full">
+            <input type="text" name="city" placeholder="Current city *" class="form-full" required>
+            <textarea name="connection" placeholder="Your connection to Milan *" class="form-full" rows="4" required></textarea>
+          </div>
+
+          <!-- 2. Works -->
+          <div class="form-section">
+            <h3 class="form-section-title">Works for consideration</h3>
+            <div id="works-container"></div>
+            <button type="button" class="add-work-btn" id="add-work-btn">+ Add another work</button>
+          </div>
+
+          <!-- 3. Materials -->
+          <div class="form-section">
+            <h3 class="form-section-title">Your materials</h3>
+            <textarea name="statement" placeholder="Artist statement *" class="form-full" rows="5" required></textarea>
+            <div class="upload-row">
+              <label class="upload-zone">
+                <input type="file" name="cv" accept=".pdf,.doc,.docx" hidden>
+                <span class="upload-zone-text">CV <span class="upload-plus">+</span></span>
+                <span class="upload-filename"></span>
+              </label>
+              <label class="upload-zone">
                 <input type="file" name="portfolio" accept=".pdf" hidden>
-                <span class="upload-name">Portfolio PDF</span>
-                <span class="upload-plus">+</span>
+                <span class="upload-zone-text">Portfolio PDF <span class="upload-plus">+</span></span>
+                <span class="upload-filename"></span>
               </label>
             </div>
-
-            <button type="submit" class="btn btn-primary apply-submit">Apply Now!</button>
-            <a href="#" class="apply-terms">Terms and Conditions</a>
-          </form>
-
-          <!-- Success message (hidden by default) -->
-          <div class="apply-success" id="apply-success" hidden>
-            <h3>Application Submitted!</h3>
-            <p>Thank you for applying. We will review your application and get back to you soon.</p>
+            <div class="or-divider"><span>or</span></div>
+            <input type="url" name="portfolioUrl" placeholder="Portfolio URL" class="form-full">
           </div>
+
+          <!-- Submit -->
+          <div class="form-footer">
+            <label class="privacy-check">
+              <input type="checkbox" id="privacy-checkbox">
+              <span>I agree to the <a href="#" class="accent-text">Terms and Conditions</a> and Privacy Policy</span>
+            </label>
+            <button type="submit" class="btn btn-primary apply-submit" id="apply-submit" disabled>Submit your work</button>
+          </div>
+
+        </form>
+
+        <div class="apply-success" id="apply-success" hidden>
+          <p>Thank you! Your application has been received. We'll be in touch by 20 May 2026.</p>
         </div>
 
       </div>
+    </div>
+  </div>
+
+  <!-- ═══ CONTACT VIEW ═══ -->
+  <div class="view view-section" id="view-contact">
+    <div class="section-bar">
+      <button class="back-btn" data-back="menu" aria-label="Back to menu">← Back</button>
+    </div>
+    <div class="section-scroll">
+      <div class="section-inner">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-list">
+          <div class="contact-item">
+            <h3>Artists</h3>
+            <a href="mailto:artists@example.com">artists@example.com</a>
+          </div>
+          <div class="contact-item">
+            <h3>Press</h3>
+            <a href="mailto:press@example.com">press@example.com</a>
+          </div>
+          <div class="contact-item">
+            <h3>Partners &amp; Sponsors</h3>
+            <a href="mailto:partners@example.com">partners@example.com</a>
+          </div>
+        </div>
+        <p class="contact-note">&copy; 2026 Milano: Home Away From Home</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ BIO OVERLAY ═══ -->
+  <div class="bio-overlay" id="bio-overlay" hidden>
+    <button class="bio-close" id="bio-close" aria-label="Close">×</button>
+    <div class="bio-content">
+      <h2 class="bio-name" id="bio-name"></h2>
+      <p class="bio-role" id="bio-role"></p>
+      <hr class="bio-rule">
+      <p class="bio-text">Bio coming soon.</p>
     </div>
   </div>
 
