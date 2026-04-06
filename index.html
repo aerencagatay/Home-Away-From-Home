@@ -13,17 +13,20 @@
   <!-- ═══ HOME VIEW ═══ -->
   <div class="view view-home active" id="view-home">
 
-    <!-- Saffron header band -->
+    <!-- Header band -->
     <div class="home-band">
       <span class="home-band-title">Home Away From Home</span>
-      <button class="lang-toggle" type="button" aria-label="Switch language" data-lang-target="it">IT</button>
     </div>
 
-    <!-- Top-right: INFO button -->
-    <button class="info-btn" id="btn-info" aria-label="Open navigation">
-      <span>Info</span>
-      <span class="info-plus" aria-hidden="true">+</span>
-    </button>
+    <!-- Top-right: IT toggle + hamburger -->
+    <div class="home-top-right">
+      <button class="lang-toggle" type="button" aria-label="Switch language" data-lang-target="it">IT</button>
+      <button class="hamburger-btn" id="btn-info" aria-label="Open navigation">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
 
     <!-- Centered content -->
     <div class="home-center">
@@ -70,35 +73,40 @@
 
         <p class="contributors-label">Contributors</p>
         <div class="contributor-list">
-          <div class="contributor-item" onclick="openBio('Lara Mercan Şahin', 'Co-Curator')">
-            <div class="contributor-info">
-              <span class="contributor-name">Lara Mercan Şahin</span>
-              <span class="contributor-role">Co-Curator</span>
-            </div>
-          </div>
           <div class="contributor-item" onclick="openBio('Bethany Landrum', 'Co-Curator')">
             <div class="contributor-info">
               <span class="contributor-name">Bethany Landrum</span>
               <span class="contributor-role">Co-Curator</span>
             </div>
+            <span class="contributor-arrow">→</span>
           </div>
           <div class="contributor-item" onclick="openBio('Caroline Marie Duque', 'Co-Curator')">
             <div class="contributor-info">
               <span class="contributor-name">Caroline Marie Duque</span>
               <span class="contributor-role">Co-Curator</span>
             </div>
+            <span class="contributor-arrow">→</span>
           </div>
           <div class="contributor-item" onclick="openBio('Iona Anastassiadou', 'Co-Curator')">
             <div class="contributor-info">
               <span class="contributor-name">Iona Anastassiadou</span>
               <span class="contributor-role">Co-Curator</span>
             </div>
+            <span class="contributor-arrow">→</span>
+          </div>
+          <div class="contributor-item" onclick="openBio('Lara Mercan Şahin', 'Co-Curator')">
+            <div class="contributor-info">
+              <span class="contributor-name">Lara Mercan Şahin</span>
+              <span class="contributor-role">Co-Curator</span>
+            </div>
+            <span class="contributor-arrow">→</span>
           </div>
           <div class="contributor-item" onclick="openBio('Sneha Mahato', 'Co-Curator')">
             <div class="contributor-info">
               <span class="contributor-name">Sneha Mahato</span>
               <span class="contributor-role">Co-Curator</span>
             </div>
+            <span class="contributor-arrow">→</span>
           </div>
         </div>
 
@@ -119,10 +127,10 @@
         <h2 class="board-title">Advisory Board</h2>
         <div class="board-grid">
 
-          <div class="board-card" onclick="openBio('Damiano Gulli', 'Curator of Contemporary Art, Triennale Milano')">
+          <div class="board-card">
             <div class="board-card-text">
-              <span class="board-card-name">Damiano Gulli</span>
-              <span class="board-card-role">Curator of Contemporary Art, Triennale Milano</span>
+              <span class="board-card-name">To be updated</span>
+              <span class="board-card-role">To be updated</span>
             </div>
             <div class="board-card-img-wrap"></div>
           </div>
@@ -145,10 +153,10 @@
             <div class="board-card-img-wrap"></div>
           </div>
 
-          <div class="board-card" onclick="openBio('Lorenzo Perini Natali', 'Collector &amp; Founder, Progetto Ludovico')">
+          <div class="board-card">
             <div class="board-card-text">
-              <span class="board-card-name">Lorenzo Perini Natali</span>
-              <span class="board-card-role">Collector &amp; Founder, Progetto Ludovico</span>
+              <span class="board-card-name">To be updated</span>
+              <span class="board-card-role">To be updated</span>
             </div>
             <div class="board-card-img-wrap"></div>
           </div>
@@ -164,6 +172,7 @@
           </div>
 
         </div>
+        <p class="board-footer">The Advisory Board supports the curatorial and selection process by reviewing shortlisted submissions and providing expert guidance. It also serves as the jury for the exhibition prize, helping ensure a thoughtful and high-quality final selection.</p>
       </div>
     </div>
   </div>
@@ -188,7 +197,7 @@
     <div class="section-scroll">
       <div class="oc-wrap">
 
-        <h2 class="oc-heading">Open Call<br>for Artists</h2>
+        <h2 class="oc-heading">Open Call for Artists</h2>
 
         <div class="oc-rows">
           <div class="oc-row">
@@ -205,7 +214,7 @@
           </div>
           <div class="oc-row">
             <span class="oc-label">What to Submit</span>
-            <p class="oc-val">Up to 3 works, existing or new. All mediums welcome. <a href="#" class="oc-link">See full Guidelines ↗</a></p>
+            <p class="oc-val">Up to 3 works, existing or new. All mediums welcome. <a href="guidelines.html" target="_blank" class="oc-link">See full Guidelines ↗</a></p>
           </div>
           <div class="oc-row oc-row--deadline">
             <span class="oc-label">Deadline</span>
@@ -220,7 +229,7 @@
         <button class="oc-cta" data-target="apply">Apply</button>
 
         <div class="oc-footer-links">
-          <a href="#" class="oc-footer-link">Guidelines &amp; Terms ↗</a>
+          <a href="guidelines.html" target="_blank" class="oc-footer-link">Guidelines &amp; Terms ↗</a>
           <a href="privacy.html" target="_blank" class="oc-footer-link">Privacy Policy ↗</a>
         </div>
 
@@ -232,77 +241,70 @@
   <div class="view view-section" id="view-apply">
     <div class="section-bar">
       <button class="back-btn" data-back="open-call" aria-label="Back to Open Call">← BACK</button>
-      <span class="section-label">Application</span>
       <button class="lang-toggle" type="button" aria-label="Switch language" data-lang-target="it">IT</button>
     </div>
     <div class="section-scroll">
       <div class="section-inner apply-inner">
-        <h2 class="section-title">Submit Your Work</h2>
 
         <form class="apply-form" id="apply-form" novalidate>
 
-          <!-- About you -->
+          <!-- Section 1: About you -->
           <div class="form-section">
             <h3 class="form-section-title">About you</h3>
             <div class="form-grid-2">
               <div class="field-wrap">
                 <label class="field-label">First name <span class="req">*</span></label>
-                <input type="text" name="firstName" placeholder="Given name" required>
+                <input type="text" name="firstName" required>
               </div>
               <div class="field-wrap">
                 <label class="field-label">Last name <span class="req">*</span></label>
-                <input type="text" name="lastName" placeholder="Family name" required>
+                <input type="text" name="lastName" required>
+              </div>
+            </div>
+            <div class="field-wrap form-full">
+              <label class="field-label">Artist name <span class="field-note">(if different from above)</span></label>
+              <input type="text" name="artistName">
+            </div>
+            <div class="field-wrap form-full">
+              <label class="field-label">Email <span class="req">*</span></label>
+              <input type="email" name="email" required>
+            </div>
+            <div class="form-grid-2">
+              <div class="field-wrap">
+                <label class="field-label">Phone <span class="req">*</span> <span class="field-note">include country code</span></label>
+                <div class="phone-row">
+                  <div class="phone-code">
+                    <span class="phone-plus">+</span>
+                    <input type="text" name="phoneCode" maxlength="3" inputmode="numeric" class="phone-code-input">
+                  </div>
+                  <input type="tel" name="phone" class="phone-number" required>
+                </div>
               </div>
               <div class="field-wrap">
-                <label class="field-label">Email <span class="req">*</span></label>
-                <input type="email" name="email" placeholder="your@email.com" required>
-              </div>
-              <div class="field-wrap">
-                <label class="field-label">Phone</label>
-                <input type="tel" name="phone" placeholder="+39 000 000 0000">
+                <label class="field-label">Instagram</label>
+                <input type="text" name="instagram">
               </div>
             </div>
             <div class="field-wrap form-full">
-              <label class="field-label">Website</label>
-              <input type="url" name="website" placeholder="https://">
-            </div>
-            <div class="field-wrap form-full">
-              <label class="field-label">Current city <span class="req">*</span></label>
-              <input type="text" name="city" placeholder="Berlin, São Paulo, London..." required>
-            </div>
-            <div class="field-wrap form-full">
-              <label class="field-label">Your connection to Milan <span class="req">*</span></label>
-              <textarea name="connection" placeholder="e.g. Studied at Brera 2016–2019, lived in Navigli until 2022..." rows="4" required></textarea>
+              <label class="field-label">Biography <span class="req">*</span></label>
+              <p class="field-hint">Please tell us about yourself. Your practice, where you're from, where you're based now, and your connection to Milan. Max 300 words.</p>
+              <textarea name="biography" rows="6" required></textarea>
             </div>
           </div>
 
-          <!-- Works -->
+          <!-- Section 2: Your work -->
           <div class="form-section" id="works-section">
-            <h3 class="form-section-title">Your works <span class="form-section-sub">Up to 3 works</span></h3>
+            <h3 class="form-section-title">Your work <span class="form-section-sub">Up to 3 works</span></h3>
             <div id="work-blocks"></div>
-            <button type="button" class="add-work-btn" id="add-work-btn">+ Add a work</button>
+            <button type="button" class="add-work-btn" id="add-work-btn">+ Add another work</button>
           </div>
 
-          <!-- Materials -->
+          <!-- Section 3: Supporting materials -->
           <div class="form-section">
-            <h3 class="form-section-title">Your materials</h3>
-            <div class="field-wrap form-full">
-              <label class="field-label">Artist statement <span class="req">*</span></label>
-              <textarea name="statement" placeholder="Describe your practice and how it connects to the theme of home (max 300 words)" rows="6" required></textarea>
-            </div>
+            <h3 class="form-section-title">Supporting materials</h3>
             <div class="upload-row">
               <div class="field-wrap">
-                <label class="field-label">CV <span class="req">*</span></label>
-                <label class="upload-zone">
-                  <input type="file" name="cv" accept=".pdf,.doc,.docx" hidden>
-                  <span class="upload-icon">↑</span>
-                  <span class="upload-zone-text"><span class="upload-choose">Choose file</span> or drag here</span>
-                  <span class="upload-hint">PDF or DOC · max 5 MB</span>
-                  <span class="upload-filename"></span>
-                </label>
-              </div>
-              <div class="field-wrap">
-                <label class="field-label">Portfolio PDF</label>
+                <label class="field-label">Portfolio <span class="req">*</span></label>
                 <label class="upload-zone">
                   <input type="file" name="portfolio" accept=".pdf" hidden>
                   <span class="upload-icon">↑</span>
@@ -311,23 +313,43 @@
                   <span class="upload-filename"></span>
                 </label>
               </div>
+              <div class="field-wrap">
+                <label class="field-label">CV</label>
+                <label class="upload-zone">
+                  <input type="file" name="cv" accept=".pdf,.doc,.docx" hidden>
+                  <span class="upload-icon">↑</span>
+                  <span class="upload-zone-text"><span class="upload-choose">Choose file</span> or drag here</span>
+                  <span class="upload-hint">PDF or DOC · max 5 MB</span>
+                  <span class="upload-filename"></span>
+                </label>
+              </div>
             </div>
-            <div class="or-divider"><span>or</span></div>
             <div class="field-wrap form-full">
-              <label class="field-label">Portfolio URL</label>
-              <input type="url" name="portfolioUrl" placeholder="https://yourportfolio.com">
+              <label class="field-label">Website / Portfolio URL</label>
+              <input type="url" name="portfolioUrl">
             </div>
           </div>
 
+          <!-- Declarations -->
           <div class="form-footer">
             <label class="privacy-check">
-              <input type="checkbox" id="privacy-checkbox">
-              <span>I have read and agree to the <a href="privacy.html" target="_blank" class="accent-text">Privacy Policy</a> and <a href="#" class="accent-text">Terms &amp; Conditions</a></span>
+              <input type="checkbox" class="declaration-check">
+              <span>All submitted works are original and created by me. If selected, I give the organisers permission to photograph and share images of my work to promote and document the exhibition. I retain all rights to my work.</span>
+            </label>
+            <label class="privacy-check">
+              <input type="checkbox" class="declaration-check">
+              <span>I have read and accept the <a href="guidelines.html" target="_blank" class="accent-text">Open Call Guidelines</a>, <a href="#" class="accent-text">Terms &amp; Conditions</a>, and <a href="privacy.html" target="_blank" class="accent-text">Privacy Policy</a>.</span>
             </label>
             <button type="submit" class="btn btn-primary apply-submit" id="apply-submit" disabled>Submit your work</button>
           </div>
 
         </form>
+
+        <div class="apply-success" id="apply-success" hidden>
+          <h2 class="section-title">Thank you!</h2>
+          <p class="about-text">Your application has been received.</p>
+        </div>
+
       </div>
     </div>
   </div>
