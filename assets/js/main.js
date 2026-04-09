@@ -19,27 +19,42 @@ document.addEventListener('DOMContentLoaded', () => {
     'Paula Trommel': 'Paula Trommel is the Global Head of Risk and Compliance at Hauser & Wirth, with an international career spanning the art market, law, and regulatory governance. She previously held key roles at Christie\'s in London and Milan. Paula also worked at the UK Financial Conduct Authority (FCA) and The Fine Art Group, specialising in anti-money laundering, international sanctions, and financial regulation in the art market. She holds law degrees from both Germany and the United Kingdom, as well as a Master\'s in Arts Management from SDA Bocconi.'
   };
 
-  // ─── Classification options ───
+  // ─── Classification options (per v3 spec) ───
   const classifications = [
-    'Painting', 'Drawing', 'Sculpture', 'Photography', 'Video art',
-    'Installation', 'Performance', 'Digital / new media', 'Textile / fibre art',
-    'Ceramics', 'Printmaking', 'Mixed media', 'Sound art',
-    'Land / environmental art', 'Other'
+    'Ceramics', 'Collage', 'Digital / New Media', 'Drawing', 'Film',
+    'Installation', 'Mixed Media', 'Painting', 'Performance', 'Photography',
+    'Printmaking', 'Sculpture', 'Textile / Fiber Art', 'Video', 'Other'
   ];
 
   // ─── View navigation ───
+  const goldNav = document.getElementById('gold-nav');
+
   function showView(id) {
     document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
     const target = document.getElementById('view-' + id);
     if (!target) return;
     target.classList.add('active');
     current = id;
-    const focusable = target.querySelector('button, a, [tabindex]');
-    if (focusable) focusable.focus({ preventScroll: true });
+
+    // Hide gold nav on menu view only
+    if (goldNav) {
+      if (id === 'menu') goldNav.classList.add('is-hidden');
+      else goldNav.classList.remove('is-hidden');
+    }
+
+    // Reset scroll to top on navigation
+    const scroll = target.querySelector('.section-scroll');
+    if (scroll) scroll.scrollTop = 0;
   }
 
-  // INFO button → menu
+  // Hamburger → menu
   document.getElementById('btn-info')?.addEventListener('click', () => showView('menu'));
+
+  // Gold nav brand → home
+  document.getElementById('gold-nav-home')?.addEventListener('click', e => {
+    e.preventDefault();
+    showView('home');
+  });
 
   // Close button → home
   document.getElementById('btn-close')?.addEventListener('click', () => showView('home'));
@@ -52,15 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Back buttons
-  document.querySelectorAll('.back-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const back = btn.dataset.back || 'menu';
-      showView(back);
-    });
-  });
-
-  // data-target buttons (About CTA, OC apply btn, etc.)
+  // data-target buttons (About CTA, OC apply btn, pill cta, etc.)
   document.querySelectorAll('[data-target]').forEach(el => {
     if (el.classList.contains('menu-item')) return;
     el.addEventListener('click', e => {
@@ -73,16 +80,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // Keyboard navigation
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
-      // Close bio overlay if open
       const overlay = document.getElementById('bio-overlay');
       if (overlay && !overlay.hidden) {
         overlay.hidden = true;
         return;
       }
-      if (current !== 'home' && current !== 'menu') {
-        showView('menu');
-      } else if (current === 'menu') {
+      if (current === 'menu') {
         showView('home');
+      } else if (current !== 'home') {
+        showView('menu');
       }
     }
   });
@@ -99,7 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('bio-close')?.focus();
   }
 
-  // Expose globally for inline onclick handlers
   window.openBio = openBio;
 
   document.getElementById('bio-close')?.addEventListener('click', () => {
@@ -116,8 +121,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let workCount = 0;
 
   function buildClassificationSelect(index) {
-    let html = `<select name="work${index}_classification">`;
-    html += '<option value="">Select...</option>';
+    let html = `<select name="work${index}_classification" required>`;
+    html += '<option value="">Select type</option>';
     classifications.forEach(c => { html += `<option value="${c}">${c}</option>`; });
     html += '</select>';
     return html;
@@ -148,30 +153,30 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="form-grid-2">
           <div class="field-wrap">
             <label class="field-label">Title <span class="req">*</span></label>
-            <input type="text" name="work${index}_title">
+            <input type="text" name="work${index}_title" required>
+            <span class="field-error">This field is required</span>
           </div>
           <div class="field-wrap">
             <label class="field-label">Year <span class="req">*</span></label>
-            <input type="text" name="work${index}_year">
+            <input type="text" name="work${index}_year" required>
+            <span class="field-error">This field is required</span>
           </div>
         </div>
         <div class="form-grid-2">
-          <div class="field-wrap classification-wrap">
+          <div class="field-wrap">
             <label class="field-label">Classification <span class="req">*</span></label>
             ${buildClassificationSelect(index)}
-            <div class="classification-other" hidden>
-              <input type="text" name="work${index}_classificationOther" placeholder="Describe your medium">
-              <button type="button" class="classification-back">← back to list</button>
-            </div>
+            <span class="field-error">This field is required</span>
           </div>
           <div class="field-wrap">
             <label class="field-label">Medium <span class="req">*</span></label>
-            <input type="text" name="work${index}_medium" placeholder="Oil on canvas, video, steel...">
+            <input type="text" name="work${index}_medium" required>
+            <span class="field-error">This field is required</span>
           </div>
         </div>
         <div class="form-grid-2">
           <div class="field-wrap">
-            <label class="field-label">Dimensions (cm)</label>
+            <label class="field-label">Dimensions <span class="field-note">in centimetres (cm)</span></label>
             <div class="dims-group">
               <input type="text" name="work${index}_h" placeholder="H">
               <input type="text" name="work${index}_w" placeholder="W">
@@ -179,13 +184,14 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
           </div>
           <div class="field-wrap">
-            <label class="field-label">Weight (kg)</label>
-            <input type="text" name="work${index}_kg" placeholder="kg">
+            <label class="field-label">Weight <span class="field-note">in kilograms (kg)</span></label>
+            <input type="text" name="work${index}_kg">
           </div>
         </div>
 
         <div class="field-wrap">
-          <label class="field-label">Images <span class="req">*</span> <span class="field-note">Up to 4 images per work</span></label>
+          <label class="field-label">Images <span class="req">*</span></label>
+          <p class="apply-hint">Up to 4 images · JPG, PNG or TIFF · max 10 MB · min 1500px</p>
           <div class="image-grid" data-work="${index}">
             <div class="image-slot image-slot--empty"><span>+</span></div>
             <div class="image-slot image-slot--empty"><span>+</span></div>
@@ -193,17 +199,14 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="image-slot image-slot--empty"><span>+</span></div>
           </div>
           <input type="file" class="image-grid-input" accept="image/jpeg,image/png,image/tiff" multiple hidden data-work="${index}">
-          <span class="upload-hint">JPG, PNG or TIFF · max 10 MB · min 1500px</span>
-        </div>
-
-        <div class="field-wrap">
+          <span class="field-error">At least one image is required</span>
           <button type="button" class="video-toggle-btn" data-work="${index}">+ Add video</button>
           <div class="video-zone" data-work="${index}" hidden>
             <label class="upload-zone video-upload-zone">
-              <input type="file" name="work${index}_video" accept="video/mp4,video/quicktime" hidden>
+              <input type="file" name="work${index}_video" accept="video/mp4" hidden>
               <span class="upload-icon">↑</span>
               <span class="upload-zone-text"><span class="upload-choose">Choose video</span> or drag here</span>
-              <span class="upload-hint">MP4 or MOV · max 100 MB</span>
+              <span class="upload-hint">MP4 · max 500 MB</span>
             </label>
             <div class="video-file-row" hidden>
               <span class="video-filename"></span>
@@ -211,48 +214,29 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <label class="privacy-check" style="margin-top:0.5rem">
               <input type="checkbox" name="work${index}_hasEquipment">
-              <span>I can provide my own display equipment</span>
+              <span>I will bring my own display equipment (e.g. screen, power cord)</span>
             </label>
           </div>
         </div>
 
         <div class="field-wrap">
           <label class="field-label">About this work <span class="req">*</span></label>
-          <p class="field-hint">Describe the concept, materials, and process. If the work relates to your experience of Milan or themes of migration and belonging, let us know. <a href="guidelines.html" target="_blank" class="accent-text">See guidelines</a></p>
-          <textarea name="work${index}_about" rows="4"></textarea>
+          <p class="field-hint">What it is and how it connects to the themes of Home Away From Home. Max 200 words. <a href="guidelines.pdf" download class="plain-link">Download guidelines</a></p>
+          <textarea name="work${index}_about" rows="4" required></textarea>
+          <span class="field-error">This field is required</span>
         </div>
 
         <div class="field-wrap">
           <label class="field-label">Installation preferences</label>
-          <textarea name="work${index}_installation" rows="3" placeholder="Wall mount, plinth, power, darkened room, sound..."></textarea>
+          <p class="field-hint">Please share how you'd ideally like your work displayed. Due to the nature of the venue some requests may have limitations, but if you are selected we will work with you to find the best solution.</p>
+          <textarea name="work${index}_installation" rows="3"></textarea>
           <label class="privacy-check" style="margin-top:0.5rem">
             <input type="checkbox" class="flexible-check" data-work="${index}">
-            <span>I'm flexible — no specific requirements</span>
+            <span>I'm flexible, no specific requirements</span>
           </label>
         </div>
       </div>
     `;
-
-    // ─── Classification "Other" swap ───
-    const classSelect = block.querySelector(`select[name="work${index}_classification"]`);
-    const otherWrap = block.querySelector('.classification-other');
-    const otherInput = otherWrap.querySelector('input');
-    const backBtn = otherWrap.querySelector('.classification-back');
-
-    classSelect.addEventListener('change', () => {
-      if (classSelect.value === 'Other') {
-        classSelect.hidden = true;
-        otherWrap.hidden = false;
-        otherInput.focus();
-      }
-    });
-
-    backBtn.addEventListener('click', () => {
-      classSelect.value = '';
-      classSelect.hidden = false;
-      otherWrap.hidden = true;
-      otherInput.value = '';
-    });
 
     // ─── Image grid ───
     const imageGrid = block.querySelector('.image-grid');
@@ -273,17 +257,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const files = Array.from(imageInput.files);
       if (!files.length) return;
 
-      // Fill starting from the targeted slot, then fill remaining empty slots
       let startSlot = parseInt(imageInput.dataset.slotIndex || '0', 10);
       let fileIdx = 0;
 
-      // First fill the targeted slot
       if (fileIdx < files.length && !imageFiles[startSlot]) {
         fillSlot(startSlot, files[fileIdx]);
         fileIdx++;
       }
 
-      // Then fill remaining empty slots
       for (let i = 0; i < 4 && fileIdx < files.length; i++) {
         if (i === startSlot) continue;
         if (!imageFiles[i]) {
@@ -293,6 +274,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       imageInput.value = '';
+      // Clear image error if any file now present
+      if (imageFiles.some(Boolean)) {
+        const imagesWrap = imageInput.closest('.field-wrap');
+        imagesWrap?.classList.remove('has-error');
+      }
     });
 
     function fillSlot(i, file) {
@@ -341,7 +327,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (isOpen) {
         videoZone.hidden = true;
         videoToggle.textContent = '+ Add video';
-        // Clear video
         videoInput.value = '';
         videoUploadZone.hidden = false;
         videoFileRow.hidden = true;
@@ -388,14 +373,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // ─── Remove block ───
     const removeEl = block.querySelector('.work-remove-btn');
     if (removeEl) {
-      removeEl.addEventListener('click', () => {
+      removeEl.addEventListener('click', e => {
+        e.stopPropagation();
         block.remove();
         updateAddBtn();
       });
     }
 
-    // Store imageFiles ref for form submission
+    // Store imageFiles ref for validation + submission
     block._imageFiles = imageFiles;
+
+    // Attach live-error clearing to inputs
+    attachLiveValidation(block);
 
     return block;
   }
@@ -419,7 +408,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const btn = document.getElementById('add-work-btn');
     if (!btn) return;
     const count = document.querySelectorAll('.work-block').length;
-    btn.style.display = count >= 3 ? 'none' : '';
+    if (count >= 3) {
+      btn.disabled = true;
+      btn.classList.add('is-disabled');
+    } else {
+      btn.disabled = false;
+      btn.classList.remove('is-disabled');
+    }
   }
 
   document.getElementById('add-work-btn')?.addEventListener('click', () => {
@@ -430,28 +425,34 @@ document.addEventListener('DOMContentLoaded', () => {
     updateAddBtn();
   });
 
-  // Add first work block on page load (no remove button)
   const workContainer = document.getElementById('work-blocks');
   if (workContainer) {
     workContainer.appendChild(createWorkBlock(true));
+    updateAddBtn();
   }
 
   // ─── CV / Portfolio upload feedback ───
-  document.querySelectorAll('.upload-zone').forEach(zone => {
-    // Skip video upload zones inside work blocks
-    if (zone.classList.contains('video-upload-zone')) return;
-    const input = zone.querySelector('input[type="file"]');
-    const filenameEl = zone.querySelector('.upload-filename');
-    const chooseEl = zone.querySelector('.upload-choose');
-    if (!input) return;
-    input.addEventListener('change', () => {
-      if (input.files.length > 0) {
-        zone.classList.add('has-file');
-        if (filenameEl) filenameEl.textContent = input.files[0].name;
-        if (chooseEl) chooseEl.textContent = 'Change file';
-      }
+  function bindUploadZones(root) {
+    (root || document).querySelectorAll('.upload-zone').forEach(zone => {
+      if (zone.classList.contains('video-upload-zone')) return;
+      if (zone.dataset.bound) return;
+      zone.dataset.bound = '1';
+      const input = zone.querySelector('input[type="file"]');
+      const filenameEl = zone.querySelector('.upload-filename');
+      const chooseEl = zone.querySelector('.upload-choose');
+      if (!input) return;
+      input.addEventListener('change', () => {
+        if (input.files.length > 0) {
+          zone.classList.add('has-file');
+          if (filenameEl) filenameEl.textContent = input.files[0].name;
+          if (chooseEl) chooseEl.textContent = 'Change file';
+          const wrap = zone.closest('.field-wrap');
+          wrap?.classList.remove('has-error');
+        }
+      });
     });
-  });
+  }
+  bindUploadZones(document);
 
   // ─── Declaration checkboxes enable submit ───
   const declarationChecks = document.querySelectorAll('.declaration-check');
@@ -467,16 +468,92 @@ document.addEventListener('DOMContentLoaded', () => {
     cb.addEventListener('change', updateSubmitState);
   });
 
+  // ─── Live validation: clear errors as the user types ───
+  function attachLiveValidation(root) {
+    (root || document).querySelectorAll('input, textarea, select').forEach(el => {
+      if (el.dataset.liveBound) return;
+      el.dataset.liveBound = '1';
+      const clear = () => {
+        const wrap = el.closest('.field-wrap');
+        if (!wrap) return;
+        if (el.value && el.value.trim() !== '') {
+          wrap.classList.remove('has-error');
+        }
+      };
+      el.addEventListener('input', clear);
+      el.addEventListener('change', clear);
+    });
+  }
+  attachLiveValidation(document);
+
+  // ─── Form validation on submit ───
+  function validateForm(form) {
+    const errors = [];
+
+    // Clear previous errors
+    form.querySelectorAll('.field-wrap.has-error').forEach(w => w.classList.remove('has-error'));
+
+    // Validate required inputs/textareas/selects
+    form.querySelectorAll('input[required], textarea[required], select[required]').forEach(el => {
+      // Skip disabled
+      if (el.disabled) return;
+      const wrap = el.closest('.field-wrap');
+      if (!wrap) return;
+      const val = (el.value || '').trim();
+      if (!val) {
+        wrap.classList.add('has-error');
+        errors.push(wrap);
+      }
+    });
+
+    // Validate portfolio (required file)
+    const portfolioInput = form.querySelector('input[name="portfolio"]');
+    if (portfolioInput && portfolioInput.files.length === 0) {
+      const wrap = portfolioInput.closest('.field-wrap');
+      if (wrap) {
+        wrap.classList.add('has-error');
+        errors.push(wrap);
+      }
+    }
+
+    // Validate work blocks — each must have at least one image
+    form.querySelectorAll('.work-block').forEach(block => {
+      const images = block._imageFiles || [];
+      if (!images.some(Boolean)) {
+        const imgWrap = block.querySelector('.image-grid')?.closest('.field-wrap');
+        if (imgWrap) {
+          imgWrap.classList.add('has-error');
+          errors.push(imgWrap);
+        }
+      }
+    });
+
+    if (errors.length > 0) {
+      // Scroll first error into view
+      const scrollContainer = form.closest('.section-scroll');
+      const first = errors[0];
+      if (first && scrollContainer) {
+        const firstRect = first.getBoundingClientRect();
+        const contRect = scrollContainer.getBoundingClientRect();
+        scrollContainer.scrollTop += firstRect.top - contRect.top - 80;
+      }
+      // Focus the first invalid input if possible
+      const firstInput = first?.querySelector('input, textarea, select');
+      firstInput?.focus({ preventScroll: true });
+    }
+
+    return errors.length === 0;
+  }
+
   // ─── Form submission ───
   const applyForm = document.getElementById('apply-form');
-  const applySuccess = document.getElementById('apply-success');
 
   if (applyForm) {
     applyForm.addEventListener('submit', e => {
       e.preventDefault();
-      // Hide form, show success
-      applyForm.hidden = true;
-      if (applySuccess) applySuccess.hidden = false;
+      if (!validateForm(applyForm)) return;
+      // On success, navigate to the thank you view
+      showView('thanks');
     });
   }
 

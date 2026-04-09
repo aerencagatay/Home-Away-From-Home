@@ -3,23 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Milano: Home Away From Home — A contemporary art exhibition exploring migration, belonging, and the spaces between. 4–7 June 2026, Milan.">
+  <meta name="description" content="Milano: Home Away From Home — A contemporary art exhibition exploring migration, belonging, and the spaces between. June 2026, Milan.">
   <meta name="theme-color" content="#0a0a0a">
   <title>Milano: Home Away From Home</title>
+  <!-- DIN Condensed substitute via Google Fonts (Barlow Condensed is the closest open match).
+       Swap for Adobe Fonts DIN Condensed kit when available. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-  <!-- ═══ HOME VIEW ═══ -->
-  <div class="view view-home active" id="view-home">
-
-    <!-- Header band -->
-    <div class="home-band">
-      <span class="home-band-title">Home Away From Home</span>
-    </div>
-
-    <!-- Top-right: IT toggle + hamburger -->
-    <div class="home-top-right">
+  <!-- ═══ PERSISTENT GOLD NAV BAR ═══ -->
+  <header class="gold-nav" id="gold-nav">
+    <a class="gold-nav-brand" id="gold-nav-home" href="#" aria-label="Home">Milano</a>
+    <div class="gold-nav-right">
       <button class="lang-toggle" type="button" aria-label="Switch language" data-lang-target="it">IT</button>
       <button class="hamburger-btn" id="btn-info" aria-label="Open navigation">
         <span class="hamburger-line"></span>
@@ -27,20 +26,21 @@
         <span class="hamburger-line"></span>
       </button>
     </div>
+  </header>
 
-    <!-- Centered content -->
+  <!-- ═══ HOME VIEW ═══ -->
+  <div class="view view-home active" id="view-home">
     <div class="home-center">
       <p class="tagline" data-i18n="hero.tagline">A Contemporary Art Exhibition</p>
       <h1 class="home-title">
         <span class="title-city">Milano</span>
       </h1>
       <p class="home-meta">
-        <time datetime="2026-06-04/2026-06-07">4–7 June 2026</time>
+        <time datetime="2026-06">June 2026</time>
         <span class="dot" aria-hidden="true"> · </span>
-        <span>Rifugio Antiaereo di Piazza Grandi, Milan</span>
+        <span>Milan · Venue to be announced</span>
       </p>
     </div>
-
   </div>
 
   <!-- ═══ MENU VIEW ═══ -->
@@ -52,59 +52,51 @@
       <button class="menu-item" data-target="advisory-board" data-i18n="nav.advisoryBoard">Advisory Board</button>
       <button class="menu-item" data-target="contact" data-i18n="nav.contact">Contact</button>
     </nav>
-    <p class="menu-footer">4–7 June 2026 · Milan</p>
+    <p class="menu-footer">June 2026 · Milan</p>
   </div>
 
   <!-- ═══ EXHIBITION VIEW ═══ -->
   <div class="view view-section" id="view-exhibition">
-    <div class="section-bar">
-      <button class="back-btn" data-back="menu" aria-label="Back to menu">← BACK</button>
-      <button class="lang-toggle" type="button" aria-label="Switch language" data-lang-target="it">IT</button>
-    </div>
     <div class="section-scroll">
       <div class="section-inner">
 
         <h2 class="section-title">Exhibition</h2>
         <p class="about-text">
-          <em>Milano: Home Away From Home</em> explores what it means to build a life in a city that is not your own. Through the works of emerging artists who have experienced migration, displacement, or simply the quiet act of starting over, the exhibition transforms a WWII-era underground shelter into a space of reflection on belonging, identity, and the invisible ties that connect us to the places we call home — even temporarily. Set beneath Piazza Grandi in Milan, the venue itself carries the memory of shelter and refuge, echoing the journeys of the artists within.
+          <em>Milano: Home Away From Home</em> explores what it means to build a life in a city that is not your own. Through the works of emerging artists who have experienced migration, displacement, or simply the quiet act of starting over, the exhibition transforms the venue into a space of reflection on belonging, identity, and the invisible ties that connect us to the places we call home — even temporarily. Set in Milan, the exhibition echoes the journeys of the artists within.
         </p>
-        <p class="exhibition-meta">4–7 June 2026 · Rifugio Antiaereo di Piazza Grandi, Milan</p>
-        <a class="exhibition-oc-link" data-target="open-call" href="#">Apply to the Open Call →</a>
+        <p class="exhibition-meta">June 2026 · Milan · Venue to be announced</p>
 
-        <p class="contributors-label">Contributors</p>
+        <button type="button" class="pill-cta exhibition-apply-pill" data-target="open-call">Apply to the Open Call</button>
+
+        <p class="team-label">Curatorial &amp; Exhibition Team</p>
         <div class="contributor-list">
-          <div class="contributor-item" onclick="openBio('Lara Mercan Şahin', 'Co-Curator')">
+          <div class="contributor-item" onclick="openBio('Iona Anastassiadou', 'Co-Curator')">
             <div class="contributor-info">
-              <span class="contributor-name">Lara Mercan Şahin</span>
-              <span class="contributor-role">Co-Curator</span>
+              <span class="contributor-name">Iona Anastassiadou</span>
             </div>
             <span class="contributor-arrow">→</span>
           </div>
           <div class="contributor-item" onclick="openBio('Caroline Marie Duque', 'Co-Curator')">
             <div class="contributor-info">
               <span class="contributor-name">Caroline Marie Duque</span>
-              <span class="contributor-role">Co-Curator</span>
-            </div>
-            <span class="contributor-arrow">→</span>
-          </div>
-          <div class="contributor-item" onclick="openBio('Iona Anastassiadou', 'Co-Curator')">
-            <div class="contributor-info">
-              <span class="contributor-name">Iona Anastassiadou</span>
-              <span class="contributor-role">Co-Curator</span>
             </div>
             <span class="contributor-arrow">→</span>
           </div>
           <div class="contributor-item" onclick="openBio('Bethany Landrum', 'Co-Curator')">
             <div class="contributor-info">
               <span class="contributor-name">Bethany Landrum</span>
-              <span class="contributor-role">Co-Curator</span>
             </div>
             <span class="contributor-arrow">→</span>
           </div>
           <div class="contributor-item" onclick="openBio('Sneha Mahato', 'Co-Curator')">
             <div class="contributor-info">
               <span class="contributor-name">Sneha Mahato</span>
-              <span class="contributor-role">Co-Curator</span>
+            </div>
+            <span class="contributor-arrow">→</span>
+          </div>
+          <div class="contributor-item" onclick="openBio('Lara Mercan Şahin', 'Co-Curator')">
+            <div class="contributor-info">
+              <span class="contributor-name">Lara Mercan Şahin</span>
             </div>
             <span class="contributor-arrow">→</span>
           </div>
@@ -118,21 +110,19 @@
 
   <!-- ═══ ADVISORY BOARD VIEW ═══ -->
   <div class="view view-section view-board" id="view-advisory-board">
-    <div class="section-bar">
-      <button class="back-btn" data-back="menu" aria-label="Back to menu">← BACK</button>
-      <button class="lang-toggle" type="button" aria-label="Switch language" data-lang-target="it">IT</button>
-    </div>
     <div class="section-scroll">
       <div class="board-layout">
         <h2 class="board-title">Advisory Board</h2>
         <div class="board-grid">
 
-          <div class="board-card">
+          <div class="board-card" onclick="openBio('Damiano Gulli', 'Curator of Contemporary Art, Triennale Milano')">
             <div class="board-card-text">
-              <span class="board-card-name">To be updated</span>
-              <span class="board-card-role">To be updated</span>
+              <span class="board-card-name">Damiano Gulli</span>
+              <span class="board-card-role">Curator of Contemporary Art, Triennale Milano</span>
             </div>
-            <div class="board-card-img-wrap"></div>
+            <div class="board-card-img-wrap">
+              <img src="assets/images/GULLI PHOTO.jpeg" alt="Damiano Gulli">
+            </div>
           </div>
 
           <div class="board-card" onclick="openBio('Dr. Sharon Hecker', 'Art Historian, Curator &amp; Consultant')">
@@ -155,10 +145,10 @@
             </div>
           </div>
 
-          <div class="board-card">
+          <div class="board-card" onclick="openBio('Lorenzo Perini Natali', 'Collector &amp; Founder, Progetto Ludovico')">
             <div class="board-card-text">
-              <span class="board-card-name">To be updated</span>
-              <span class="board-card-role">To be updated</span>
+              <span class="board-card-name">Lorenzo Perini Natali</span>
+              <span class="board-card-role">Collector &amp; Founder, Progetto Ludovico</span>
             </div>
             <div class="board-card-img-wrap"></div>
           </div>
@@ -192,10 +182,6 @@
 
   <!-- ═══ OPEN CALL VIEW ═══ -->
   <div class="view view-section" id="view-open-call">
-    <div class="section-bar">
-      <button class="back-btn" data-back="menu" aria-label="Back to menu">← BACK</button>
-      <button class="lang-toggle" type="button" aria-label="Switch language" data-lang-target="it">IT</button>
-    </div>
     <div class="section-scroll">
       <div class="oc-wrap">
 
@@ -204,11 +190,11 @@
         <div class="oc-rows">
           <div class="oc-row">
             <span class="oc-label">Prize</span>
-            <p class="oc-val">€500 award for one artist · Special recognition for selected works.</p>
+            <p class="oc-val">€500 award for one artist</p>
           </div>
           <div class="oc-row">
             <span class="oc-label">Entry</span>
-            <p class="oc-val">Free to apply.</p>
+            <p class="oc-val">Free to apply</p>
           </div>
           <div class="oc-row">
             <span class="oc-label">Who Can Apply</span>
@@ -216,24 +202,19 @@
           </div>
           <div class="oc-row">
             <span class="oc-label">What to Submit</span>
-            <p class="oc-val">Up to 3 works, existing or new. All mediums welcome. <a href="guidelines.html" target="_blank" class="oc-link">See full Guidelines ↗</a></p>
+            <p class="oc-val">Up to 3 works, existing or new. All mediums welcome. <a href="guidelines.pdf" target="_blank" class="oc-guidelines-link">Download Guidelines</a></p>
           </div>
           <div class="oc-row oc-row--deadline">
             <span class="oc-label">Deadline</span>
-            <p class="oc-val">26 April 2026 · 23:59 CET</p>
+            <p class="oc-val">7 May 2026 · 23:59 CET</p>
           </div>
           <div class="oc-row">
             <span class="oc-label">Exhibition</span>
-            <p class="oc-val">4–7 June 2026 · Rifugio Antiaereo · Piazza Grandi, Milan</p>
+            <p class="oc-val">June 2026 · Milan · Date and venue to be announced</p>
           </div>
         </div>
 
-        <button class="oc-cta" data-target="apply">Apply</button>
-
-        <div class="oc-footer-links">
-          <a href="guidelines.html" target="_blank" class="oc-footer-link">Guidelines &amp; Terms ↗</a>
-          <a href="privacy.html" target="_blank" class="oc-footer-link">Privacy Policy ↗</a>
-        </div>
+        <button class="oc-cta" data-target="apply">Start Application</button>
 
       </div>
     </div>
@@ -241,10 +222,6 @@
 
   <!-- ═══ APPLY VIEW ═══ -->
   <div class="view view-section" id="view-apply">
-    <div class="section-bar">
-      <button class="back-btn" data-back="open-call" aria-label="Back to Open Call">← BACK</button>
-      <button class="lang-toggle" type="button" aria-label="Switch language" data-lang-target="it">IT</button>
-    </div>
     <div class="section-scroll">
       <div class="section-inner apply-inner">
 
@@ -257,10 +234,12 @@
               <div class="field-wrap">
                 <label class="field-label">First name <span class="req">*</span></label>
                 <input type="text" name="firstName" required>
+                <span class="field-error">This field is required</span>
               </div>
               <div class="field-wrap">
                 <label class="field-label">Last name <span class="req">*</span></label>
                 <input type="text" name="lastName" required>
+                <span class="field-error">This field is required</span>
               </div>
             </div>
             <div class="field-wrap form-full">
@@ -270,6 +249,7 @@
             <div class="field-wrap form-full">
               <label class="field-label">Email <span class="req">*</span></label>
               <input type="email" name="email" required>
+              <span class="field-error">This field is required</span>
             </div>
             <div class="form-grid-2">
               <div class="field-wrap">
@@ -281,6 +261,7 @@
                   </div>
                   <input type="tel" name="phone" class="phone-number" required>
                 </div>
+                <span class="field-error">This field is required</span>
               </div>
               <div class="field-wrap">
                 <label class="field-label">Instagram</label>
@@ -291,6 +272,7 @@
               <label class="field-label">Biography <span class="req">*</span></label>
               <p class="field-hint">Please tell us about yourself. Your practice, where you're from, where you're based now, and your connection to Milan. Max 300 words.</p>
               <textarea name="biography" rows="6" required></textarea>
+              <span class="field-error">This field is required</span>
             </div>
           </div>
 
@@ -314,6 +296,7 @@
                   <span class="upload-hint">PDF · max 20 MB</span>
                   <span class="upload-filename"></span>
                 </label>
+                <span class="field-error">This field is required</span>
               </div>
               <div class="field-wrap">
                 <label class="field-label">CV</label>
@@ -340,28 +323,48 @@
             </label>
             <label class="privacy-check">
               <input type="checkbox" class="declaration-check">
-              <span>I have read and accept the <a href="guidelines.html" target="_blank" class="accent-text">Open Call Guidelines &amp; Terms</a> and <a href="privacy.html" target="_blank" class="accent-text">Privacy Policy</a>.</span>
+              <span>I have read and accept the <a href="terms.html" target="_blank" class="plain-link">Terms &amp; Conditions</a> and <a href="privacy.html" target="_blank" class="plain-link">Privacy Policy</a>.</span>
             </label>
-            <button type="submit" class="btn btn-primary apply-submit" id="apply-submit" disabled>Submit your work</button>
+            <button type="submit" class="btn btn-primary apply-submit" id="apply-submit" disabled>Submit Application</button>
           </div>
 
         </form>
 
-        <div class="apply-success" id="apply-success" hidden>
-          <h2 class="section-title">Thank you!</h2>
-          <p class="about-text">Your application has been received.</p>
-        </div>
+      </div>
+    </div>
+  </div>
 
+  <!-- ═══ THANK YOU VIEW ═══ -->
+  <div class="view view-section" id="view-thanks">
+    <div class="section-scroll">
+      <div class="thanks-wrap">
+        <h2 class="thanks-title">Submitted!</h2>
+        <p class="thanks-body">Thank you for applying to <em>Milano: Home Away From Home</em>. We review every application carefully and will be in touch by 16 May 2026.</p>
+        <p class="thanks-label">What happens next</p>
+        <div class="thanks-timeline">
+          <div class="thanks-row">
+            <span class="thanks-date thanks-date--now">Now</span>
+            <p class="thanks-text">Application received.</p>
+          </div>
+          <div class="thanks-row">
+            <span class="thanks-date">April — May</span>
+            <p class="thanks-text">Review by the curatorial team and advisory board.</p>
+          </div>
+          <div class="thanks-row">
+            <span class="thanks-date">16 May 2026</span>
+            <p class="thanks-text">All applicants notified by email.</p>
+          </div>
+          <div class="thanks-row">
+            <span class="thanks-date">June 2026</span>
+            <p class="thanks-text">Exhibition in Milan. Venue to be announced.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- ═══ CONTACT VIEW ═══ -->
   <div class="view view-section" id="view-contact">
-    <div class="section-bar">
-      <button class="back-btn" data-back="menu" aria-label="Back to menu">← BACK</button>
-      <button class="lang-toggle" type="button" aria-label="Switch language" data-lang-target="it">IT</button>
-    </div>
     <div class="section-scroll">
       <div class="section-inner">
         <h2 class="section-title" data-i18n="contact.title">Contact</h2>
