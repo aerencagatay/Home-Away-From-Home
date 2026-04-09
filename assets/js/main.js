@@ -28,8 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ─── View navigation ───
   const goldNav = document.getElementById('gold-nav');
+  const VALID_VIEWS = new Set([
+    'home', 'menu', 'exhibition', 'advisory-board',
+    'open-call', 'apply', 'thanks', 'contact'
+  ]);
 
-  function showView(id) {
+  function showView(id, pushHistory = true) {
     document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
     const target = document.getElementById('view-' + id);
     if (!target) return;
@@ -45,7 +49,37 @@ document.addEventListener('DOMContentLoaded', () => {
     // Reset scroll to top on navigation
     const scroll = target.querySelector('.section-scroll');
     if (scroll) scroll.scrollTop = 0;
+
+    // Push to browser history so the back button returns to the previous view
+    if (pushHistory) {
+      const hash = id === 'home' ? ' ' : '#' + id;
+      try {
+        history.pushState({ view: id }, '', hash);
+      } catch (_) {}
+    }
   }
+
+  // ─── Browser history integration ───
+  // Seed the initial state (using the current hash if valid, otherwise 'home')
+  const initialHash = (location.hash || '').replace('#', '');
+  const initialView = VALID_VIEWS.has(initialHash) ? initialHash : 'home';
+  try {
+    history.replaceState({ view: initialView }, '', location.hash || ' ');
+  } catch (_) {}
+  if (initialView !== 'home') {
+    showView(initialView, false);
+  }
+
+  // Back/forward button → swap views without pushing a new entry
+  window.addEventListener('popstate', e => {
+    const view = (e.state && e.state.view) || 'home';
+    if (VALID_VIEWS.has(view)) {
+      // Close bio overlay if it was open
+      const overlay = document.getElementById('bio-overlay');
+      if (overlay && !overlay.hidden) overlay.hidden = true;
+      showView(view, false);
+    }
+  });
 
   // Hamburger → menu
   document.getElementById('btn-info')?.addEventListener('click', () => showView('menu'));
