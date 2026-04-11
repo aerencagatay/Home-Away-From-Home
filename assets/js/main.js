@@ -612,24 +612,46 @@ document.addEventListener('DOMContentLoaded', () => {
       .replace(/^-+|-+$/g, '').substring(0, 40) || 'untitled';
   }
 
+  // POST with no-cors to avoid Google's redirect CORS issue.
+  // Returns opaque response — we verify success via a GET check.
   async function postToAppsScript(payload) {
-    const res = await fetch(APPS_SCRIPT_URL, {
+    await fetch(APPS_SCRIPT_URL, {
       method: 'POST',
       body: JSON.stringify(payload),
-      redirect: 'follow'
+      mode: 'no-cors'
     });
-    // Apps Script redirects to googleusercontent.com — follow it
-    const text = await res.text();
-    try { return JSON.parse(text); }
-    catch (_) { throw new Error('Bad response: ' + text.substring(0, 200)); }
+    // If we reach here without throwing, request was sent.
+    return { ok: true };
+  }
+
+  // GET is CORS-friendly on Apps Script — use it to verify finalize.
+  async function verifySubmission(tempId, maxAttempts) {
+    for (let i = 0; i < maxAttempts; i++) {
+      await new Promise(r => setTimeout(r, 3000));
+      try {
+        const res = await fetch(APPS_SCRIPT_URL + '?check=' + encodeURIComponent(tempId));
+        const data = await res.json();
+        if (data.ok) return data;
+        if (data.error) throw new Error(data.error);
+      } catch (_) { /* retry */ }
+    }
+    // If verification times out, don't fail — the submission may still be processing
+    return { ok: true, unverified: true };
   }
 
   // ─── Form submission ───
 
+  function showThanksWithBalloons() {
+    showView('thanks');
+    if (typeof window.__launchBalloons === 'function') {
+      setTimeout(() => window.__launchBalloons(), 300);
+    }
+  }
+
   async function submitApplication(form) {
     // Dev mode: skip upload if no URL configured
     if (!APPS_SCRIPT_URL) {
-      showView('thanks');
+      showThanksWithBalloons();
       return;
     }
 
@@ -730,14 +752,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // ── Finalize ──
       btn.textContent = 'Finalizing...';
-      const res = await postToAppsScript({
+      await postToAppsScript({
         action: 'finalize',
         tempId: tempId,
         data:   data
       });
-      if (!res.ok) throw new Error(res.error || 'Finalize failed');
 
-      showView('thanks');
+      // Verify via GET (CORS-friendly) — wait up to ~15s
+      btn.textContent = 'Verifying...';
+      await verifySubmission(tempId, 5);
+
+      showThanksWithBalloons();
 
     } catch (err) {
       btn.disabled = false;

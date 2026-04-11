@@ -144,7 +144,33 @@ function doPost(e) {
   }
 }
 
-function doGet() {
+function doGet(e) {
+  const p = e ? e.parameter : {};
+
+  // Status check: /exec?check=<tempId>
+  if (p.check) {
+    try {
+      const apps = _getAppsFolder();
+      // Look for a folder whose name contains the tempId or the finalized version
+      const ss    = _getMasterSheet();
+      const sheet = ss.getSheets()[0];
+      const last  = sheet.getLastRow();
+      if (last >= 2) {
+        // Check if the most recent submission came from this temp batch
+        // We store tempId in a script property during finalize
+        const props = PropertiesService.getScriptProperties();
+        const stored = props.getProperty('last_temp_' + p.check);
+        if (stored) {
+          props.deleteProperty('last_temp_' + p.check);
+          return _json({ ok: true, submissionId: stored });
+        }
+      }
+      return _json({ ok: false, status: 'pending' });
+    } catch (err) {
+      return _json({ ok: false, error: String(err.message || err) });
+    }
+  }
+
   return HtmlService.createHtmlOutput(
     'Home Away From Home — submission endpoint — OK'
   );
@@ -268,6 +294,10 @@ function handleFinalize(p) {
 
     sheet.insertRowBefore(2);
     sheet.getRange(2, 1, 1, row.length).setValues([row]);
+
+    // Store tempId → subId mapping so doGet(?check=tempId) can verify
+    PropertiesService.getScriptProperties()
+      .setProperty('last_temp_' + p.tempId, subId);
 
     return { ok: true, submissionId: subId, folderUrl: folderUrl };
 
