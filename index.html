@@ -10,36 +10,40 @@
        Swap for Adobe Fonts DIN Condensed kit when available. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
   <!-- ═══ PERSISTENT GOLD NAV BAR ═══ -->
   <header class="gold-nav" id="gold-nav">
-    <a class="gold-nav-brand" id="gold-nav-home" href="#" aria-label="Home">Milano</a>
-    <div class="gold-nav-right">
-      <button class="lang-toggle" type="button" aria-label="Switch language" data-lang-target="it">IT</button>
+    <div class="gold-nav-left">
       <button class="hamburger-btn" id="btn-info" aria-label="Open navigation">
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
       </button>
     </div>
+    <a class="gold-nav-brand" id="gold-nav-home" href="#" aria-label="Home">Home Away From Home</a>
+    <div class="gold-nav-right">
+      <button class="lang-toggle" type="button" aria-label="Switch language" data-lang-target="it">IT</button>
+    </div>
   </header>
 
   <!-- ═══ HOME VIEW ═══ -->
   <div class="view view-home active" id="view-home">
-    <div class="home-center">
-      <p class="tagline" data-i18n="hero.tagline">A Contemporary Art Exhibition</p>
-      <h1 class="home-title">
-        <span class="title-city">Milano</span>
-      </h1>
-      <p class="home-meta">
-        <time datetime="2026-06">June 2026</time>
-        <span class="dot" aria-hidden="true"> · </span>
-        <span>Milan · Venue to be announced</span>
-      </p>
+    <div class="home-inner">
+      <div class="home-text">
+        <span class="home-badge" data-i18n="hero.tagline">A Contemporary Art Exhibition</span>
+        <h1 class="home-title">
+          <span class="title-milano">Milano</span>
+          <span class="title-home">Home</span>
+          <span class="title-script">away from</span>
+          <span class="title-home">Home</span>
+          <span class="title-q">?</span>
+        </h1>
+      </div>
+      <img class="home-illustration" src="assets/images/LANDING PAGE ILLUSTRATION.001.png" alt="Illustration of Milan seen through an open window" draggable="false">
     </div>
   </div>
 
@@ -70,12 +74,6 @@
 
         <p class="team-label">Curatorial &amp; Exhibition Team</p>
         <div class="contributor-list">
-          <div class="contributor-item" onclick="openBio('Lara Mercan Şahin', 'Co-Curator')">
-            <div class="contributor-info">
-              <span class="contributor-name">Lara Mercan Şahin</span>
-            </div>
-            <span class="contributor-arrow">→</span>
-          </div>
           <div class="contributor-item" onclick="openBio('Iona Anastassiadou', 'Co-Curator')">
             <div class="contributor-info">
               <span class="contributor-name">Iona Anastassiadou</span>
@@ -97,6 +95,12 @@
           <div class="contributor-item" onclick="openBio('Sneha Mahato', 'Co-Curator')">
             <div class="contributor-info">
               <span class="contributor-name">Sneha Mahato</span>
+            </div>
+            <span class="contributor-arrow">→</span>
+          </div>
+          <div class="contributor-item" onclick="openBio('Lara Mercan Şahin', 'Co-Curator')">
+            <div class="contributor-info">
+              <span class="contributor-name">Lara Mercan Şahin</span>
             </div>
             <span class="contributor-arrow">→</span>
           </div>

@@ -2,6 +2,11 @@
    Main JS — Interactive view navigation
    ============================================ */
 
+// ─── Apps Script Web App URL ───
+// After deploying Code.gs, paste the URL here.
+// While empty, form submits skip the upload (dev mode).
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzJGHioq1VSdYzX7jxTbLVSdFFIWAG9Lz8ip3_lSSi0RBvC5CDSm0m_PPkso3Tcpq-k/exec';
+
 document.addEventListener('DOMContentLoaded', () => {
   let current = 'home';
 
@@ -579,15 +584,178 @@ document.addEventListener('DOMContentLoaded', () => {
     return errors.length === 0;
   }
 
+  // ─── File helpers ───
+
+  function readFileAsBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        resolve({
+          name: file.name,
+          mime: file.type,
+          base64: reader.result.split(',')[1]
+        });
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function fileExt(name) {
+    const m = /(\.[a-zA-Z0-9]+)$/.exec(name || '');
+    return m ? m[1].toLowerCase() : '';
+  }
+
+  function slugify(s) {
+    return String(s || 'untitled')
+      .toLowerCase().replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '').substring(0, 40) || 'untitled';
+  }
+
+  async function postToAppsScript(payload) {
+    const res = await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      body: JSON.stringify(payload),
+      redirect: 'follow'
+    });
+    // Apps Script redirects to googleusercontent.com — follow it
+    const text = await res.text();
+    try { return JSON.parse(text); }
+    catch (_) { throw new Error('Bad response: ' + text.substring(0, 200)); }
+  }
+
   // ─── Form submission ───
+
+  async function submitApplication(form) {
+    // Dev mode: skip upload if no URL configured
+    if (!APPS_SCRIPT_URL) {
+      showView('thanks');
+      return;
+    }
+
+    const tempId = 'tmp_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8);
+
+    // Collect text fields
+    const val = (name) => (form.querySelector('[name="' + name + '"]')?.value || '').trim();
+    const data = {
+      firstName:    val('firstName'),
+      lastName:     val('lastName'),
+      artistName:   val('artistName'),
+      email:        val('email'),
+      phoneCode:    val('phoneCode'),
+      phone:        val('phone'),
+      instagram:    val('instagram'),
+      biography:    val('biography'),
+      portfolioUrl: val('portfolioUrl')
+    };
+
+    // Collect files to upload: { path, file }
+    const uploads = [];
+
+    const portfolio = form.querySelector('[name="portfolio"]')?.files[0];
+    if (portfolio) uploads.push({ path: 'portfolio' + fileExt(portfolio.name), file: portfolio });
+
+    const cv = form.querySelector('[name="cv"]')?.files[0];
+    if (cv) uploads.push({ path: 'cv' + fileExt(cv.name), file: cv });
+
+    // Work blocks
+    const blocks = form.querySelectorAll('.work-block');
+    let workNum = 0;
+    blocks.forEach(block => {
+      workNum++;
+      const idx = block.dataset.index;
+      const g = (field) => {
+        const el = block.querySelector('[name="work' + idx + '_' + field + '"]');
+        if (!el) return '';
+        return el.type === 'checkbox' ? el.checked : el.value.trim();
+      };
+
+      const workData = {
+        title:          g('title'),
+        year:           g('year'),
+        classification: g('classification'),
+        medium:         g('medium'),
+        h: g('h'), w: g('w'), d: g('d'),
+        kg:             g('kg'),
+        about:          g('about'),
+        installation:   g('installation'),
+        hasEquipment:   g('hasEquipment')
+      };
+      data['work' + workNum] = workData;
+
+      const folder = 'work-0' + workNum + '_' + slugify(workData.title);
+
+      // Images (from _imageFiles array stored on the block element)
+      const imgs = (block._imageFiles || []).filter(Boolean);
+      imgs.forEach((file, i) => {
+        uploads.push({
+          path: folder + '/image-' + String(i + 1).padStart(2, '0') + fileExt(file.name),
+          file: file
+        });
+      });
+
+      // Video (optional)
+      const vidInput = block.querySelector('input[type="file"][name$="_video"]');
+      const vidFile = vidInput?.files[0];
+      if (vidFile) {
+        uploads.push({ path: folder + '/video' + fileExt(vidFile.name), file: vidFile });
+      }
+    });
+
+    // ── Upload with progress ──
+    const btn = document.getElementById('apply-submit');
+    const originalText = btn.textContent;
+    btn.disabled = true;
+
+    const total = uploads.length + 1; // +1 for finalize step
+    let done = 0;
+    const progress = () => { btn.textContent = 'Uploading ' + done + '/' + total + '...'; };
+    progress();
+
+    try {
+      for (const u of uploads) {
+        const f = await readFileAsBase64(u.file);
+        const res = await postToAppsScript({
+          action: 'upload',
+          tempId: tempId,
+          path:   u.path,
+          name:   f.name,
+          mime:   f.mime,
+          base64: f.base64
+        });
+        if (!res.ok) throw new Error(res.error || 'Upload failed');
+        done++;
+        progress();
+      }
+
+      // ── Finalize ──
+      btn.textContent = 'Finalizing...';
+      const res = await postToAppsScript({
+        action: 'finalize',
+        tempId: tempId,
+        data:   data
+      });
+      if (!res.ok) throw new Error(res.error || 'Finalize failed');
+
+      showView('thanks');
+
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = originalText;
+      alert(
+        'Submission failed: ' + (err.message || err) +
+        '\n\nPlease try again. If the problem persists, contact homeawayfromhome.art@gmail.com'
+      );
+    }
+  }
+
   const applyForm = document.getElementById('apply-form');
 
   if (applyForm) {
     applyForm.addEventListener('submit', e => {
       e.preventDefault();
       if (!validateForm(applyForm)) return;
-      // On success, navigate to the thank you view
-      showView('thanks');
+      submitApplication(applyForm);
     });
   }
 
