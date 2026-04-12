@@ -1,130 +1,89 @@
+Depolama alanının %77 kadarı kullanılıyor … Depolama alanınız biterse dosya oluşturamaz, düzenleyemez ve yükleyemezsiniz. 3 ay boyunca ₺49,99 yerine ₺11,99 ödeyerek 100 GB depolama alanını ailenizle paylaşın.
 # Milano: Home Away From Home — Prompts for Site Updates
 
 Live site: homeawayfromhome.art
-Screenshots can be found in google drive for reference.
+Screenshots can be found in Google Drive for reference.
+
+**v4** — Landing page fixes, Minor fixes across all other pages
 
 ---
 
-## 1. Header
+## 1. Landing Page
 
-- Replace the header background color to black (`#0a0a0a`).
-- Replace the "Info +" text button with a hamburger icon (3 horizontal bars made of CSS spans, ~20px wide, 1.5px tall, white, spaced 5px apart).
-- Move the language toggle (IT) to sit to the left of the hamburger icon.
-- Keep all existing click behavior — only the visual appearance changes.
+**Fixes:**
 
----
+1. The hamburger menu icon needs to be on the right with the language switcher next to it. Take out "Home Away From Home" in the centre of the header and put a little home icon on the left so people can navigate back to the landing page (this will eventually be replaced with the logo)
+2. There's a slight difference in black between the window and the background — it needs to blend in seamlessly, looks boxy right now
+3. The question mark should be in the same handwritten font as "away from"
+4. "A Contemporary Art Exhibition" text should be the gray version — see image in Google Drive
+5. The illustration and the title text should be the same width — left corner to right corner aligned
+6. Put "A Contemporary Art Exhibition" left-aligned above the Milano Home title
+7. Add "Coming to Milan · June 2026" below the title on the right side, in the same text style as "A Contemporary Art Exhibition", so it looks balanced. The last character of "2026" should align with the "?"
+8. Add an Open Call CTA pill on the landing page — "Open Call — Apply by 3 May" — below the window, centred at the bottom of the page. Same gold pill style used throughout the site. On click: navigate to the Open Call page.
+9. The "IT" language toggle button in the gold bar — the text inside is slightly misaligned, fix so it's properly centred within the button
 
-## 2. Navigation menu
+**Note:** Please review the overall layout of the landing page — sizing, spacing, and alignment of all elements. Make sure everything feels balanced and well-proportioned. See screenshot in Google Drive for reference.
 
-- Rename and reorder the menu items to:
-  1. Exhibition
-  2. Open Call
-  3. Advisory Board
-  4. Contact
-- Only the visible labels change — the underlying navigation behavior stays the same.
-- Style the close button (×) to have no background, no border, and no outline — just the × symbol in white.
-
----
-
-## 3. Exhibition page
-
-- Remove the page label from the top navigation bar — the title appears in the content below.
-- The page title "Exhibition" sits at the top of the content area, left-aligned, large serif italic (~3.5rem).
-- Below the title: exhibition description text in body copy (content is [TBD] — use placeholder text for now).
-- Below the text: a text link "Apply to the Open Call →" in the gold accent color.
-- Below that: a "Contributors" section. The heading "Contributors" is small, uppercase, wide letter-spacing, muted color.
-- The contributors appear as a stacked list of rows. Each row has:
-  - A thin top and bottom border
-  - Left side: name in serif italic (~1rem), role in tiny uppercase muted text below it
-  - Right side: an arrow "→" in muted color that nudges right on hover
-  - On hover: the name turns gold
-  - The full row is clickable and opens a full-screen bio overlay
-- Contributors in this order:
-  - Bethany Landrum — Co-Curator
-  - Caroline Marie Duque — Co-Curator
-  - Iona Anastassiadou — Co-Curator
-  - Lara Mercan Şahin — Co-Curator
-  - Sneha Mahato — Co-Curator
-- Below the contributor list: a text link "Advisory Board →" in muted color that navigates to the Advisory Board page.
-- Bio overlay (opens when a contributor row is clicked): full-screen dark overlay with the person's name large in serif italic, their role in small uppercase below, a thin horizontal rule, then bio text. A ✕ close button top-right. Clicking ✕ closes it. All bios are [TBD] — use placeholder text for now.
+**Everything on the landing page must be above the fold** — the gold bar, title, illustration, and CTA pill should all be visible on screen without scrolling, on a standard desktop viewport.
 
 ---
 
-## 4. Advisory Board Page
+## 2. Exhibition Page
 
-- Remove the page label from the top navigation bar — the title appears in the content below.
-- The page title "Advisory Board" sits at the top of the content area in serif italic (~3rem).
-- Below it: a horizontal scrollable strip of five member columns, centered on the page.
-- Each column is ~180px wide with:
-  - Name in serif italic above the photo
-  - Title in tiny uppercase muted text below the name
-  - A 2:3 portrait photo placeholder box below (photos will be sent separately)
-  - The entire column is clickable — name, title, and photo all trigger the overlay
-  - On hover: photo dims slightly
-- Members in alphabetical order by last name:
-  - To be updated — To be updated
-  - Dr. Sharon Hecker — Art Historian, Curator & Consultant
-  - Valentina Kovalishina — Artist, Art Director & Founder
-  - To be updated — To be updated
-  - Paula Trommel — Global Head of Risk & Compliance, Hauser & Wirth
-- Bio overlay (opens when any part of a member column is clicked): full-screen dark overlay with the person's name large in serif italic, their title in small uppercase below, a thin horizontal rule, then bio text. A ✕ close button top-right. Clicking ✕ closes it. All bios are [TBD] — use placeholder text for now.
+**Fixes:**
+
+1. Remove the "Co-Curator" title from the overlay that appears when you click on a team member's name
+2. Replace the current exhibition description text with the following:
+
+*Milano: Home Away From Home is a multidisciplinary contemporary art exhibition that brings together emerging artists whose lives and practices intersect with Milan. Through works spanning painting, photography, sculpture, installation, moving image, digital media, sound, and performance, the exhibition explores what it means to build a life in a city that is not one's own. Shaped by experiences of migration, displacement, or simply starting over, the works reflect on belonging, identity, and the invisible ties that connect people to the places they call home, even if only temporarily.*
+
+*Focusing on artists who have arrived in Milan from elsewhere, the exhibition brings together diverse perspectives on navigating unfamiliar environments and forming connections within the city. Set in Milan, it echoes the journeys of the artists themselves, positioning the city as both a shared point of intersection and a lived space where memories, cultural encounters, and evolving identities continue to unfold.*
 
 ---
 
-## 5. Open Call Page
+## 3. Open Call Page
 
-- Remove the page label from the top navigation bar — the title appears in the content below.
-- The page title "Open Call for Artists" sits at the top of the content area, left-aligned, bold sans-serif (~4.5rem). It reads as two lines: "Open Call" / "for Artists".
-- Below the title: four info rows separated by thin horizontal dividers. Each row has a small uppercase muted label (~0.7rem, wide letter-spacing) in a fixed ~130px left column, and the value on the right:
-  - WHO CAN APPLY: "Artists at the start of their career who have lived, studied, or worked in Milan at some point. Still in the city or based somewhere else in the world. Must be at least 18 years old."
-  - WHAT TO SUBMIT: "Up to 3 works, existing or new. All mediums welcome."
-  - DEADLINE: "26 April 2026 · 23:59" — displayed in the gold accent color
-  - EXHIBITION: "4–7 June 2026 · Rifugio Antiaereo · Piazza Grandi, Milan"
-- At the bottom: a full-width gold pill button labelled "APPLY" that navigates to the application form.
-- The whole page should fit on screen without scrolling.
+**Fixes:**
+
+1. "Download Guidelines" link is returning a 404 error — the guidelines PDF needs to be added to the project (will be provided via Google Drive). Once added, clicking "Download Guidelines" should trigger a download of that PDF.
+2. Update the deadline from "7 May" to "3 May" — this applies to the deadline row on the Open Call page and the CTA pill on the landing page.
 
 ---
 
-## 6. Application form
+## 4. Application Form
 
-- Keep the "Application" label from the top navigation bar.
-- The form has a max width of ~620px, centered on the page.
-- Three sections with headings in regular weight sans-serif (~1.1rem):
+**Fixes:**
 
-**About you**
-- First name + Last name (side by side)
-- Email + Phone (side by side)
-- Website (full width)
-- Current city (full width)
-- "Your connection to Milan" (full-width textarea)
-- All fields: dark background, subtle border, rounded corners (~8px). On focus: soft gold glow. Required fields marked with *.
-
-**Works for consideration**
-- Expandable work blocks (max 3). Each block has a header row with a status dot, work number, and a chevron to collapse/expand. Inside each block:
-  - Image upload zone (dashed border, click to upload, shows filename when a file is selected)
-  - Title + Year (side by side)
-  - Medium + Type dropdown (side by side) — options: Unique work / Edition / Performance or durational / Site-specific
-  - Dimensions: four small inline inputs (W / H / D / kg)
-  - Installation notes (textarea)
-- An "+ Add another work" button below, hidden once 3 blocks exist.
-- Users can remove blocks (not available when only 1 block exists).
-
-**Your materials**
-- Artist statement (full-width textarea)
-- CV upload + Portfolio PDF upload (side by side, same dashed upload zone style as image upload)
-- "or" divider
-- Portfolio URL (full width)
-- End with a privacy checkbox and a full-width "Submit your work" button — disabled until checkbox is checked.
-- After submission: hide the form and show a confirmation: "Thank you! Your application has been received. We'll be in touch by 20 May 2026."
+1. "Download Guidelines" link in the form is throwing a 404 / file not found error — needs to link to the same guidelines PDF as on the Open Call page (will be provided via Google Drive)
+2. Image upload slots should support drag and drop — currently not working
+3. Portfolio and CV upload zones say drag and drop but it's not working — fix drag and drop for both
+4. Add a line below the Submit Application button: "If you are having problems submitting the application form please email your materials to artists@homeawayfromhome.art" — small, muted colour, centred
+5. There's a significant lag when hitting submit — speed up the submission so the transition to the thank you page feels immediate. 
 
 ---
 
-*Content updates (bios, exhibition text, photos) will be sent separately/accessible in a google drive. All [TBD] markers show where content is coming.*
+## 5. Thank You Page
+
+**Fixes:**
+
+1. Replace the balloons animation with confetti
 
 ---
 
-## To be addressed after initial build
+## 6. Advisory Board Page
 
-- **Thank you page:** After form submission, the confirmation should redirect to a dedicated thank you page/view. Design to be shared separately.
-- **Form handling:** The form needs a backend service to  send email notifications for submissions.
-- **Security:** Ensure form submissions are protected — spam prevention and secure file handling should be considered before the form goes live.
+**Fixes:**
+
+1. Update all advisory board member photos and bios with the most up to date versions — find these in the Google Drive
+2. Make sure each photo is cropped consistently — centred on the subject and well-framed
+
+---
+
+## 7. Contact Page
+
+**Fixes:**
+
+1. Update the contact emails to:
+   - Artists: artists@homeawayfromhome.art
+   - Press: press@homeawayfromhome.art
+   - Partners & Sponsors: partners@homeawayfromhome.art

@@ -9,7 +9,16 @@
       "Bash(cp \"Home-Away-From-Home-main/assets/css/style.css\" assets/css/style.css)",
       "Bash(cp \"Home-Away-From-Home-main/assets/js/main.js\" assets/js/main.js)",
       "Bash(cp -r \"Home-Away-From-Home-main/.\" .)",
-      "Bash(rm -rf \"Home-Away-From-Home-main\")"
+      "Bash(rm -rf \"Home-Away-From-Home-main\")",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(curl -sI \"https://cdn.jsdelivr.net/npm/balloons-js/dist/balloons.umd.min.js\")",
+      "Bash(curl -s \"https://data.jsdelivr.com/v1/packages/npm/balloons-js\")",
+      "Bash(curl -s \"https://data.jsdelivr.com/v1/packages/npm/balloons-js@0.0.3/entrypoints\")",
+      "Bash(curl -s \"https://data.jsdelivr.com/v1/packages/npm/balloons-js@0.0.3\")",
+      "Bash(curl -s \"https://cdn.jsdelivr.net/npm/balloons-js@0.0.3/dist/index.js\")"
     ]
   }
 }

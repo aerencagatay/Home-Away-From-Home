@@ -8,6 +8,8 @@ const translations = {
     "nav.openCall": "Open Call",
     "nav.contact": "Contact",
     "hero.tagline": "A Contemporary Art Exhibition",
+    "hero.coming": "Coming to Milan · June 2026",
+    "hero.openCallPill": "Open Call — Apply by 3 May",
     "hero.cta": "Apply to the Open Call",
     "about.title": "About the Exhibition",
     "about.text":
@@ -34,6 +36,8 @@ const translations = {
     "nav.openCall": "Bando",
     "nav.contact": "Contatti",
     "hero.tagline": "Una Mostra di Arte Contemporanea",
+    "hero.coming": "In arrivo a Milano · giugno 2026",
+    "hero.openCallPill": "Bando — Candidatura entro il 3 maggio",
     "hero.cta": "Candidati al Bando",
     "about.title": "La Mostra",
     "about.text":

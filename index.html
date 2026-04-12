@@ -17,33 +17,43 @@
 
   <!-- ═══ PERSISTENT GOLD NAV BAR ═══ -->
   <header class="gold-nav" id="gold-nav">
-    <div class="gold-nav-left">
+    <a class="gold-nav-home-link" id="gold-nav-home" href="#" aria-label="Home">
+      <svg class="gold-nav-home-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+        <path fill="currentColor" d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+      </svg>
+    </a>
+    <div class="gold-nav-actions">
+      <button class="lang-toggle" type="button" aria-label="Switch language" data-lang-target="it">IT</button>
       <button class="hamburger-btn" id="btn-info" aria-label="Open navigation">
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
       </button>
     </div>
-    <a class="gold-nav-brand" id="gold-nav-home" href="#" aria-label="Home">Home Away From Home</a>
-    <div class="gold-nav-right">
-      <button class="lang-toggle" type="button" aria-label="Switch language" data-lang-target="it">IT</button>
-    </div>
   </header>
 
   <!-- ═══ HOME VIEW ═══ -->
   <div class="view view-home active" id="view-home">
     <div class="home-inner">
-      <div class="home-text">
-        <span class="home-badge" data-i18n="hero.tagline">A Contemporary Art Exhibition</span>
-        <h1 class="home-title">
-          <span class="title-milano">Milano</span>
-          <span class="title-home">Home</span>
-          <span class="title-script">away from</span>
-          <span class="title-home">Home</span>
-          <span class="title-q">?</span>
-        </h1>
+      <div class="home-hero">
+        <div class="home-text">
+          <span class="home-badge" data-i18n="hero.tagline">A Contemporary Art Exhibition</span>
+          <div class="home-title-block">
+            <h1 class="home-title">
+              <span class="title-milano">Milano</span>
+              <span class="title-home">Home</span>
+              <span class="title-script">away from</span>
+              <span class="title-home">Home</span>
+              <span class="title-q">?</span>
+            </h1>
+            <p class="home-coming" data-i18n="hero.coming">Coming to Milan · June 2026</p>
+          </div>
+        </div>
+        <div class="home-illustration-wrap">
+          <img class="home-illustration" src="assets/images/LANDING PAGE ILLUSTRATION.001.png" alt="Illustration of Milan seen through an open window" draggable="false">
+        </div>
       </div>
-      <img class="home-illustration" src="assets/images/LANDING PAGE ILLUSTRATION.001.png" alt="Illustration of Milan seen through an open window" draggable="false">
+      <button type="button" class="pill-cta home-open-call-cta" data-target="open-call" data-i18n="hero.openCallPill">Open Call — Apply by 3 May</button>
     </div>
   </div>
 
@@ -66,7 +76,10 @@
 
         <h2 class="section-title">Exhibition</h2>
         <p class="about-text">
-          <em>Milano: Home Away From Home</em> explores what it means to build a life in a city that is not your own. Through the works of emerging artists who have experienced migration, displacement, or simply the quiet act of starting over, the exhibition transforms the venue into a space of reflection on belonging, identity, and the invisible ties that connect us to the places we call home — even temporarily. Set in Milan, the exhibition echoes the journeys of the artists within.
+          <em>Milano: Home Away From Home</em> is a multidisciplinary contemporary art exhibition that brings together emerging artists whose lives and practices intersect with Milan. Through works spanning painting, photography, sculpture, installation, moving image, digital media, sound, and performance, the exhibition explores what it means to build a life in a city that is not one's own. Shaped by experiences of migration, displacement, or simply starting over, the works reflect on belonging, identity, and the invisible ties that connect people to the places they call home, even if only temporarily.
+        </p>
+        <p class="about-text">
+          Focusing on artists who have arrived in Milan from elsewhere, the exhibition brings together diverse perspectives on navigating unfamiliar environments and forming connections within the city. Set in Milan, it echoes the journeys of the artists themselves, positioning the city as both a shared point of intersection and a lived space where memories, cultural encounters, and evolving identities continue to unfold.
         </p>
         <p class="exhibition-meta">June 2026 · Milan · Venue to be announced</p>
 
@@ -74,31 +87,31 @@
 
         <p class="team-label">Curatorial &amp; Exhibition Team</p>
         <div class="contributor-list">
-          <div class="contributor-item" onclick="openBio('Iona Anastassiadou', 'Co-Curator')">
+          <div class="contributor-item" onclick="openBio('Iona Anastassiadou', '')">
             <div class="contributor-info">
               <span class="contributor-name">Iona Anastassiadou</span>
             </div>
             <span class="contributor-arrow">→</span>
           </div>
-          <div class="contributor-item" onclick="openBio('Caroline Marie Duque', 'Co-Curator')">
+          <div class="contributor-item" onclick="openBio('Caroline Marie Duque', '')">
             <div class="contributor-info">
               <span class="contributor-name">Caroline Marie Duque</span>
             </div>
             <span class="contributor-arrow">→</span>
           </div>
-          <div class="contributor-item" onclick="openBio('Bethany Landrum', 'Co-Curator')">
+          <div class="contributor-item" onclick="openBio('Bethany Landrum', '')">
             <div class="contributor-info">
               <span class="contributor-name">Bethany Landrum</span>
             </div>
             <span class="contributor-arrow">→</span>
           </div>
-          <div class="contributor-item" onclick="openBio('Sneha Mahato', 'Co-Curator')">
+          <div class="contributor-item" onclick="openBio('Sneha Mahato', '')">
             <div class="contributor-info">
               <span class="contributor-name">Sneha Mahato</span>
             </div>
             <span class="contributor-arrow">→</span>
           </div>
-          <div class="contributor-item" onclick="openBio('Lara Mercan Şahin', 'Co-Curator')">
+          <div class="contributor-item" onclick="openBio('Lara Mercan Şahin', '')">
             <div class="contributor-info">
               <span class="contributor-name">Lara Mercan Şahin</span>
             </div>
@@ -206,11 +219,11 @@
           </div>
           <div class="oc-row">
             <span class="oc-label">What to Submit</span>
-            <p class="oc-val">Up to 3 works, existing or new. All mediums welcome. <a href="guidelines.pdf" target="_blank" class="oc-guidelines-link">Download Guidelines</a></p>
+            <p class="oc-val">Up to 3 works, existing or new. All mediums welcome. <a href="assets/docs/open-call-guidelines.pdf" download="Open-Call-Guidelines.pdf" class="oc-guidelines-link">Download Guidelines</a></p>
           </div>
           <div class="oc-row oc-row--deadline">
             <span class="oc-label">Deadline</span>
-            <p class="oc-val">7 May 2026 · 23:59 CET</p>
+            <p class="oc-val">3 May 2026 · 23:59 CET</p>
           </div>
           <div class="oc-row">
             <span class="oc-label">Exhibition</span>
@@ -330,6 +343,7 @@
               <span>I have read and accept the <a href="terms.html" target="_blank" class="plain-link">Terms &amp; Conditions</a> and <a href="privacy.html" target="_blank" class="plain-link">Privacy Policy</a>.</span>
             </label>
             <button type="submit" class="btn btn-primary apply-submit" id="apply-submit" disabled>Submit Application</button>
+            <p class="apply-submit-help">If you are having problems submitting the application form please email your materials to <a href="mailto:artists@homeawayfromhome.art" class="apply-submit-help-link">artists@homeawayfromhome.art</a></p>
           </div>
 
         </form>
@@ -375,15 +389,15 @@
         <div class="contact-list">
           <div class="contact-item">
             <h3 data-i18n="contact.artistsTitle">Artists</h3>
-            <a href="mailto:homeawayfromhome.art@gmail.com">homeawayfromhome.art@gmail.com</a>
+            <a href="mailto:artists@homeawayfromhome.art">artists@homeawayfromhome.art</a>
           </div>
           <div class="contact-item">
             <h3 data-i18n="contact.pressTitle">Press</h3>
-            <a href="mailto:homeawayfromhome.art@gmail.com">homeawayfromhome.art@gmail.com</a>
+            <a href="mailto:press@homeawayfromhome.art">press@homeawayfromhome.art</a>
           </div>
           <div class="contact-item">
             <h3 data-i18n="contact.partnersTitle">Partners &amp; Sponsors</h3>
-            <a href="mailto:homeawayfromhome.art@gmail.com">homeawayfromhome.art@gmail.com</a>
+            <a href="mailto:partners@homeawayfromhome.art">partners@homeawayfromhome.art</a>
           </div>
         </div>
         <p class="contact-note">&copy; 2026 Milano: Home Away From Home</p>
@@ -391,10 +405,7 @@
     </div>
   </div>
 
-  <script type="module">
-    import { balloons } from 'https://cdn.jsdelivr.net/npm/balloons-js@0.0.3/dist/index.esm.js';
-    window.__launchBalloons = balloons;
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
   <script src="assets/js/i18n.js"></script>
   <script src="assets/js/main.js"></script>
 </body>

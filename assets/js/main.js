@@ -7,6 +7,8 @@
 // While empty, form submits skip the upload (dev mode).
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzJGHioq1VSdYzX7jxTbLVSdFFIWAG9Lz8ip3_lSSi0RBvC5CDSm0m_PPkso3Tcpq-k/exec';
 
+const GUIDELINES_PDF = 'assets/docs/open-call-guidelines.pdf';
+
 document.addEventListener('DOMContentLoaded', () => {
   let current = 'home';
 
@@ -134,8 +136,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ─── Bio overlay ───
   function openBio(name, role) {
-    document.getElementById('bio-name').textContent = name;
-    document.getElementById('bio-role').textContent = role;
+    const nameEl = document.getElementById('bio-name');
+    const roleEl = document.getElementById('bio-role');
+    const ruleEl = document.querySelector('.bio-rule');
+    nameEl.textContent = name;
+    const hasRole = Boolean(role && String(role).trim());
+    if (hasRole) {
+      roleEl.textContent = role;
+      roleEl.hidden = false;
+      if (ruleEl) ruleEl.hidden = false;
+      nameEl.classList.remove('no-role');
+    } else {
+      roleEl.textContent = '';
+      roleEl.hidden = true;
+      if (ruleEl) ruleEl.hidden = true;
+      nameEl.classList.add('no-role');
+    }
     const bioEl = document.querySelector('.bio-text');
     const text = bios[name] || 'Bio coming soon.';
     bioEl.textContent = text;
@@ -260,7 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         <div class="field-wrap">
           <label class="field-label">About this work <span class="req">*</span></label>
-          <p class="field-hint">What it is and how it connects to the themes of Home Away From Home. Max 200 words. <a href="guidelines.pdf" download class="plain-link">Download guidelines</a></p>
+          <p class="field-hint">What it is and how it connects to the themes of Home Away From Home. Max 200 words. <a href="${GUIDELINES_PDF}" download="Open-Call-Guidelines.pdf" class="plain-link">Download guidelines</a></p>
           <textarea name="work${index}_about" rows="4" required></textarea>
           <span class="field-error">This field is required</span>
         </div>
@@ -292,11 +308,13 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    imageInput.addEventListener('change', () => {
-      const files = Array.from(imageInput.files);
+    function consumeImageFiles(fileList, preferredStartSlot) {
+      const files = Array.from(fileList).filter(f => /^image\//i.test(f.type));
       if (!files.length) return;
 
-      let startSlot = parseInt(imageInput.dataset.slotIndex || '0', 10);
+      let startSlot = preferredStartSlot != null
+        ? preferredStartSlot
+        : parseInt(imageInput.dataset.slotIndex || '0', 10);
       let fileIdx = 0;
 
       if (fileIdx < files.length && !imageFiles[startSlot]) {
@@ -313,11 +331,33 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       imageInput.value = '';
-      // Clear image error if any file now present
       if (imageFiles.some(Boolean)) {
         const imagesWrap = imageInput.closest('.field-wrap');
         imagesWrap?.classList.remove('has-error');
       }
+    }
+
+    imageInput.addEventListener('change', () => {
+      const files = Array.from(imageInput.files);
+      if (!files.length) return;
+      consumeImageFiles(files);
+    });
+
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(evName => {
+      imageGrid.addEventListener(evName, e => {
+        e.preventDefault();
+        e.stopPropagation();
+      });
+    });
+    imageGrid.addEventListener('dragenter', () => imageGrid.classList.add('is-dragover'));
+    imageGrid.addEventListener('dragover', () => imageGrid.classList.add('is-dragover'));
+    imageGrid.addEventListener('dragleave', e => {
+      if (!imageGrid.contains(e.relatedTarget)) imageGrid.classList.remove('is-dragover');
+    });
+    imageGrid.addEventListener('drop', e => {
+      imageGrid.classList.remove('is-dragover');
+      const fl = e.dataTransfer && e.dataTransfer.files;
+      if (fl && fl.length) consumeImageFiles(fl, 0);
     });
 
     function fillSlot(i, file) {
@@ -387,6 +427,31 @@ document.addEventListener('DOMContentLoaded', () => {
       videoInput.value = '';
       videoUploadZone.hidden = false;
       videoFileRow.hidden = true;
+    });
+
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(evName => {
+      videoUploadZone.addEventListener(evName, e => {
+        e.preventDefault();
+        e.stopPropagation();
+      });
+    });
+    videoUploadZone.addEventListener('dragenter', () => videoUploadZone.classList.add('is-dragover'));
+    videoUploadZone.addEventListener('dragover', () => videoUploadZone.classList.add('is-dragover'));
+    videoUploadZone.addEventListener('dragleave', e => {
+      if (!videoUploadZone.contains(e.relatedTarget)) videoUploadZone.classList.remove('is-dragover');
+    });
+    videoUploadZone.addEventListener('drop', e => {
+      videoUploadZone.classList.remove('is-dragover');
+      const fl = e.dataTransfer && e.dataTransfer.files;
+      if (!fl || !fl.length) return;
+      const f = fl[0];
+      if (!/^video\//i.test(f.type)) return;
+      const dt = new DataTransfer();
+      dt.items.add(f);
+      videoInput.files = dt.files;
+      videoFilename.textContent = f.name;
+      videoUploadZone.hidden = true;
+      videoFileRow.hidden = false;
     });
 
     // ─── "I'm flexible" checkbox ───
@@ -470,7 +535,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateAddBtn();
   }
 
-  // ─── CV / Portfolio upload feedback ───
+  // ─── CV / Portfolio upload feedback + drag-and-drop ───
   function bindUploadZones(root) {
     (root || document).querySelectorAll('.upload-zone').forEach(zone => {
       if (zone.classList.contains('video-upload-zone')) return;
@@ -488,6 +553,38 @@ document.addEventListener('DOMContentLoaded', () => {
           const wrap = zone.closest('.field-wrap');
           wrap?.classList.remove('has-error');
         }
+      });
+
+      ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(evName => {
+        zone.addEventListener(evName, e => {
+          e.preventDefault();
+          e.stopPropagation();
+        });
+      });
+      zone.addEventListener('dragenter', () => zone.classList.add('is-dragover'));
+      zone.addEventListener('dragover', () => zone.classList.add('is-dragover'));
+      zone.addEventListener('dragleave', e => {
+        if (!zone.contains(e.relatedTarget)) zone.classList.remove('is-dragover');
+      });
+      zone.addEventListener('drop', e => {
+        zone.classList.remove('is-dragover');
+        const fl = e.dataTransfer && e.dataTransfer.files;
+        if (!fl || !fl.length) return;
+        const f = fl[0];
+        const ext = fileExt(f.name);
+        const acc = (input.getAttribute('accept') || '').toLowerCase();
+        const ok = acc.split(',').some(a => {
+          const t = a.trim();
+          if (t === '.pdf') return ext === '.pdf';
+          if (t === '.doc') return ext === '.doc';
+          if (t === '.docx') return ext === '.docx';
+          return false;
+        });
+        if (!ok) return;
+        const dt = new DataTransfer();
+        dt.items.add(f);
+        input.files = dt.files;
+        input.dispatchEvent(new Event('change', { bubbles: true }));
       });
     });
   }
@@ -627,7 +724,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // GET is CORS-friendly on Apps Script — use it to verify finalize.
   async function verifySubmission(tempId, maxAttempts) {
     for (let i = 0; i < maxAttempts; i++) {
-      await new Promise(r => setTimeout(r, 3000));
+      if (i > 0) await new Promise(r => setTimeout(r, 3000));
       try {
         const res = await fetch(APPS_SCRIPT_URL + '?check=' + encodeURIComponent(tempId));
         const data = await res.json();
@@ -641,17 +738,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ─── Form submission ───
 
-  function showThanksWithBalloons() {
+  function showThanksWithConfetti() {
     showView('thanks');
-    if (typeof window.__launchBalloons === 'function') {
-      setTimeout(() => window.__launchBalloons(), 300);
-    }
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || typeof confetti !== 'function') return;
+    requestAnimationFrame(() => {
+      confetti({
+        particleCount: 110,
+        spread: 72,
+        origin: { y: 0.62 },
+        colors: ['#F1C338', '#f0ece7', '#d4a828', '#ffffff']
+      });
+      setTimeout(() => {
+        confetti({
+          particleCount: 55,
+          angle: 60,
+          spread: 52,
+          origin: { x: 0, y: 0.62 },
+          colors: ['#F1C338', '#f0ece7']
+        });
+      }, 130);
+      setTimeout(() => {
+        confetti({
+          particleCount: 55,
+          angle: 120,
+          spread: 52,
+          origin: { x: 1, y: 0.62 },
+          colors: ['#F1C338', '#f0ece7']
+        });
+      }, 260);
+    });
   }
 
   async function submitApplication(form) {
     // Dev mode: skip upload if no URL configured
     if (!APPS_SCRIPT_URL) {
-      showThanksWithBalloons();
+      showThanksWithConfetti();
       return;
     }
 
@@ -758,18 +880,17 @@ document.addEventListener('DOMContentLoaded', () => {
         data:   data
       });
 
-      // Verify via GET (CORS-friendly) — wait up to ~15s
-      btn.textContent = 'Verifying...';
-      await verifySubmission(tempId, 5);
-
-      showThanksWithBalloons();
+      btn.textContent = originalText;
+      btn.disabled = false;
+      showThanksWithConfetti();
+      verifySubmission(tempId, 5).catch(() => {});
 
     } catch (err) {
       btn.disabled = false;
       btn.textContent = originalText;
       alert(
         'Submission failed: ' + (err.message || err) +
-        '\n\nPlease try again. If the problem persists, contact homeawayfromhome.art@gmail.com'
+        '\n\nPlease try again. If the problem persists, contact artists@homeawayfromhome.art'
       );
     }
   }
