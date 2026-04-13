@@ -164,9 +164,9 @@ html, body {
   align-items: center;
   justify-content: flex-start;
   padding-top: var(--nav-h);
-  overflow: hidden;
-  min-height: 100vh;
-  box-sizing: border-box;
+  /* Allow vertical scroll on mobile so CTA is always reachable */
+  overflow-x: hidden;
+  overflow-y: auto;
   background: var(--bg);
 }
 
@@ -178,11 +178,14 @@ html, body {
   max-width: 1100px;
   padding: 0 2rem;
   flex: 1;
-  min-height: calc(100vh - var(--nav-h));
-  max-height: calc(100vh - var(--nav-h));
+  /* svh = small viewport height (excludes mobile browser chrome) */
+  min-height: calc(100svh - var(--nav-h));
+  min-height: calc(100vh - var(--nav-h)); /* fallback for older browsers */
+  max-height: calc(100svh - var(--nav-h));
+  max-height: calc(100vh - var(--nav-h)); /* fallback */
   justify-content: space-between;
   gap: 0.35rem;
-  padding-bottom: 0.75rem;
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
 }
 
 .home-hero {
@@ -319,9 +322,13 @@ html, body {
 /* ─── Responsive: mobile home ─── */
 @media (max-width: 600px) {
   .home-inner {
-    padding: 0 1rem 0.5rem;
-    max-height: none;
+    padding: 0 1rem;
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+    /* Let svh do the work; don't override with none */
+    min-height: calc(100svh - var(--nav-h));
     min-height: calc(100vh - var(--nav-h));
+    max-height: calc(100svh - var(--nav-h));
+    max-height: calc(100vh - var(--nav-h));
   }
   .home-text {
     padding-bottom: 0.25rem;
@@ -332,8 +339,10 @@ html, body {
   .home-coming {
     font-size: 0.58rem;
   }
+  /* Smaller illustration on mobile so CTA is always visible */
   .home-illustration {
-    max-height: min(39vh, 338px);
+    max-height: min(28svh, 220px);
+    max-height: min(28vh, 220px);
   }
 }
 
