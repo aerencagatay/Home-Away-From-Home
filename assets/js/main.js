@@ -7,7 +7,8 @@
 // While empty, form submits skip the upload (dev mode).
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzJGHioq1VSdYzX7jxTbLVSdFFIWAG9Lz8ip3_lSSi0RBvC5CDSm0m_PPkso3Tcpq-k/exec';
 
-const GUIDELINES_PDF = 'assets/docs/open-call-guidelines.pdf';
+const GUIDELINES_PDF =
+  'assets/docs/Home%20Away%20From%20Home_%20OPEN%20CALL%20(3).pdf';
 
 document.addEventListener('DOMContentLoaded', () => {
   let current = 'home';
@@ -310,7 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         <div class="field-wrap">
           <label class="field-label" data-i18n="apply.workAbout">${_t('apply.workAbout')}</label>
-          <p class="field-hint"><span data-i18n="apply.workAboutHint">${_t('apply.workAboutHint')}</span> <a href="${GUIDELINES_PDF}" download="Open-Call-Guidelines.pdf" class="plain-link" data-i18n="apply.downloadGuidelines">${_t('apply.downloadGuidelines')}</a></p>
+          <p class="field-hint"><span data-i18n="apply.workAboutHint">${_t('apply.workAboutHint')}</span> <a href="${GUIDELINES_PDF}" download="Home-Away-From-Home-Open-Call.pdf" class="plain-link" data-i18n="apply.downloadGuidelines">${_t('apply.downloadGuidelines')}</a></p>
           <textarea name="work${index}_about" rows="4" required></textarea>
           <span class="field-error" data-i18n="apply.fieldRequired">${_t('apply.fieldRequired')}</span>
         </div>
