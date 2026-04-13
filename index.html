@@ -22,6 +22,7 @@
         <path fill="currentColor" d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
       </svg>
     </a>
+    <img class="gold-nav-logo" src="assets/images/home away from home logo.001.png" alt="Milano: Home Away From Home">
     <div class="gold-nav-actions">
       <button class="lang-toggle" type="button" aria-label="Switch language" data-lang-target="it">IT</button>
       <button class="hamburger-btn" id="btn-info" aria-label="Open navigation">
@@ -74,18 +75,18 @@
     <div class="section-scroll">
       <div class="section-inner">
 
-        <h2 class="section-title">Exhibition</h2>
-        <p class="about-text">
+        <h2 class="section-title" data-i18n="exhibition.title">Exhibition</h2>
+        <p class="about-text" data-i18n="exhibition.text1">
           <em>Milano: Home Away From Home</em> is a multidisciplinary contemporary art exhibition that brings together emerging artists whose lives and practices intersect with Milan. Through works spanning painting, photography, sculpture, installation, moving image, digital media, sound, and performance, the exhibition explores what it means to build a life in a city that is not one's own. Shaped by experiences of migration, displacement, or simply starting over, the works reflect on belonging, identity, and the invisible ties that connect people to the places they call home, even if only temporarily.
         </p>
-        <p class="about-text">
+        <p class="about-text" data-i18n="exhibition.text2">
           Focusing on artists who have arrived in Milan from elsewhere, the exhibition brings together diverse perspectives on navigating unfamiliar environments and forming connections within the city. Set in Milan, it echoes the journeys of the artists themselves, positioning the city as both a shared point of intersection and a lived space where memories, cultural encounters, and evolving identities continue to unfold.
         </p>
-        <p class="exhibition-meta">June 2026 · Milan · Venue to be announced</p>
+        <p class="exhibition-meta" data-i18n="exhibition.meta">June 2026 · Milan · Venue to be announced</p>
 
-        <button type="button" class="pill-cta exhibition-apply-pill" data-target="open-call">Apply to the Open Call</button>
+        <button type="button" class="pill-cta exhibition-apply-pill" data-target="open-call" data-i18n="exhibition.applyPill">Apply to the Open Call</button>
 
-        <p class="team-label">Curatorial &amp; Exhibition Team</p>
+        <p class="team-label" data-i18n="exhibition.teamLabel">Curatorial &amp; Exhibition Team</p>
         <div class="contributor-list">
           <div class="contributor-item" onclick="openBio('Iona Anastassiadou', '')">
             <div class="contributor-info">
@@ -119,7 +120,7 @@
           </div>
         </div>
 
-        <a class="exhibition-board-link" data-target="advisory-board" href="#">Advisory Board →</a>
+        <a class="exhibition-board-link" data-target="advisory-board" href="#" data-i18n="exhibition.boardLink">Advisory Board →</a>
 
       </div>
     </div>
@@ -129,7 +130,7 @@
   <div class="view view-section view-board" id="view-advisory-board">
     <div class="section-scroll">
       <div class="board-layout">
-        <h2 class="board-title">Advisory Board</h2>
+        <h2 class="board-title" data-i18n="advisoryBoard.title">Advisory Board</h2>
         <div class="board-grid">
 
           <div class="board-card" onclick="openBio('Damiano Gulli', 'Curator of Contemporary Art, Triennale Milano')">
@@ -167,7 +168,9 @@
               <span class="board-card-name">Lorenzo Perini Natali</span>
               <span class="board-card-role">Collector &amp; Founder, Progetto Ludovico</span>
             </div>
-            <div class="board-card-img-wrap"></div>
+            <div class="board-card-img-wrap">
+              <img src="assets/images/LORENZO NATALI PHOTO.jpeg" alt="Lorenzo Perini Natali">
+            </div>
           </div>
 
           <div class="board-card" onclick="openBio('Paula Trommel', 'Global Head of Risk &amp; Compliance, Hauser &amp; Wirth')">
@@ -181,7 +184,7 @@
           </div>
 
         </div>
-        <p class="board-footer">The Advisory Board supports the curatorial and selection process by reviewing shortlisted submissions and providing expert guidance. It also serves as the jury for the exhibition prize, helping ensure a thoughtful and high-quality final selection.</p>
+        <p class="board-footer" data-i18n="advisoryBoard.footer">The Advisory Board supports the curatorial and selection process by reviewing shortlisted submissions and providing expert guidance. It also serves as the jury for the exhibition prize, helping ensure a thoughtful and high-quality final selection.</p>
       </div>
     </div>
   </div>
@@ -202,36 +205,36 @@
     <div class="section-scroll">
       <div class="oc-wrap">
 
-        <h2 class="oc-heading">Open Call for Artists</h2>
+        <h2 class="oc-heading" data-i18n="oc.heading">Open Call for Artists</h2>
 
         <div class="oc-rows">
           <div class="oc-row">
-            <span class="oc-label">Prize</span>
-            <p class="oc-val">€500 award for one artist</p>
+            <span class="oc-label" data-i18n="oc.labelPrize">Prize</span>
+            <p class="oc-val" data-i18n="oc.valPrize">€500 award for one artist</p>
           </div>
           <div class="oc-row">
-            <span class="oc-label">Entry</span>
-            <p class="oc-val">Free to apply</p>
+            <span class="oc-label" data-i18n="oc.labelEntry">Entry</span>
+            <p class="oc-val" data-i18n="oc.valEntry">Free to apply</p>
           </div>
           <div class="oc-row">
-            <span class="oc-label">Who Can Apply</span>
-            <p class="oc-val">Early-stage artists who have lived, studied, or worked in Milan at some point. Still in the city or based somewhere else in the world. Must be at least 18 years old.</p>
+            <span class="oc-label" data-i18n="oc.labelWho">Who Can Apply</span>
+            <p class="oc-val" data-i18n="oc.valWho">Early-stage artists who have lived, studied, or worked in Milan at some point. Still in the city or based somewhere else in the world. Must be at least 18 years old.</p>
           </div>
           <div class="oc-row">
-            <span class="oc-label">What to Submit</span>
-            <p class="oc-val">Up to 3 works, existing or new. All mediums welcome. <a href="assets/docs/open-call-guidelines.pdf" download="Open-Call-Guidelines.pdf" class="oc-guidelines-link">Download Guidelines</a></p>
+            <span class="oc-label" data-i18n="oc.labelWhat">What to Submit</span>
+            <p class="oc-val"><span data-i18n="oc.valWhat">Up to 3 works, existing or new. All mediums welcome.</span> <a href="assets/docs/open-call-guidelines.pdf" download="Open-Call-Guidelines.pdf" class="oc-guidelines-link" data-i18n="oc.downloadGuidelines">Download Guidelines</a></p>
           </div>
           <div class="oc-row oc-row--deadline">
-            <span class="oc-label">Deadline</span>
-            <p class="oc-val">3 May 2026 · 23:59 CET</p>
+            <span class="oc-label" data-i18n="oc.labelDeadline">Deadline</span>
+            <p class="oc-val" data-i18n="oc.valDeadline">3 May 2026 · 23:59 CET</p>
           </div>
           <div class="oc-row">
-            <span class="oc-label">Exhibition</span>
-            <p class="oc-val">June 2026 · Milan · Date and venue to be announced</p>
+            <span class="oc-label" data-i18n="oc.labelExhibition">Exhibition</span>
+            <p class="oc-val" data-i18n="oc.valExhibition">June 2026 · Milan · Date and venue to be announced</p>
           </div>
         </div>
 
-        <button class="oc-cta" data-target="apply">Start Application</button>
+        <button class="oc-cta" data-target="apply" data-i18n="oc.cta">Start Application</button>
 
       </div>
     </div>
@@ -246,31 +249,31 @@
 
           <!-- Section 1: About you -->
           <div class="form-section">
-            <h3 class="form-section-title">About you</h3>
+            <h3 class="form-section-title" data-i18n="apply.aboutYou">About you</h3>
             <div class="form-grid-2">
               <div class="field-wrap">
-                <label class="field-label">First name <span class="req">*</span></label>
+                <label class="field-label"><span data-i18n="apply.firstName">First name</span> <span class="req">*</span></label>
                 <input type="text" name="firstName" required>
-                <span class="field-error">This field is required</span>
+                <span class="field-error" data-i18n="apply.fieldRequired">This field is required</span>
               </div>
               <div class="field-wrap">
-                <label class="field-label">Last name <span class="req">*</span></label>
+                <label class="field-label"><span data-i18n="apply.lastName">Last name</span> <span class="req">*</span></label>
                 <input type="text" name="lastName" required>
-                <span class="field-error">This field is required</span>
+                <span class="field-error" data-i18n="apply.fieldRequired">This field is required</span>
               </div>
             </div>
             <div class="field-wrap form-full">
-              <label class="field-label">Artist name <span class="field-note">(if different from above)</span></label>
+              <label class="field-label"><span data-i18n="apply.artistName">Artist name</span> <span class="field-note" data-i18n="apply.artistNameNote">(if different from above)</span></label>
               <input type="text" name="artistName">
             </div>
             <div class="field-wrap form-full">
-              <label class="field-label">Email <span class="req">*</span></label>
+              <label class="field-label"><span data-i18n="apply.email">Email</span> <span class="req">*</span></label>
               <input type="email" name="email" required>
-              <span class="field-error">This field is required</span>
+              <span class="field-error" data-i18n="apply.fieldRequired">This field is required</span>
             </div>
             <div class="form-grid-2">
               <div class="field-wrap">
-                <label class="field-label">Phone <span class="req">*</span> <span class="field-note">include country code</span></label>
+                <label class="field-label"><span data-i18n="apply.phone">Phone</span> <span class="req">*</span> <span class="field-note" data-i18n="apply.phoneNote">include country code</span></label>
                 <div class="phone-row">
                   <div class="phone-code">
                     <span class="phone-plus">+</span>
@@ -278,56 +281,56 @@
                   </div>
                   <input type="tel" name="phone" class="phone-number" required>
                 </div>
-                <span class="field-error">This field is required</span>
+                <span class="field-error" data-i18n="apply.fieldRequired">This field is required</span>
               </div>
               <div class="field-wrap">
-                <label class="field-label">Instagram</label>
+                <label class="field-label" data-i18n="apply.instagram">Instagram</label>
                 <input type="text" name="instagram">
               </div>
             </div>
             <div class="field-wrap form-full">
-              <label class="field-label">Biography <span class="req">*</span></label>
-              <p class="field-hint">Please tell us about yourself. Your practice, where you're from, where you're based now, and your connection to Milan. Max 300 words.</p>
+              <label class="field-label"><span data-i18n="apply.biography">Biography</span> <span class="req">*</span></label>
+              <p class="field-hint" data-i18n="apply.biographyHint">Please tell us about yourself. Your practice, where you're from, where you're based now, and your connection to Milan. Max 300 words.</p>
               <textarea name="biography" rows="6" required></textarea>
-              <span class="field-error">This field is required</span>
+              <span class="field-error" data-i18n="apply.fieldRequired">This field is required</span>
             </div>
           </div>
 
           <!-- Section 2: Your work -->
           <div class="form-section" id="works-section">
-            <h3 class="form-section-title">Your work <span class="form-section-sub">Up to 3 works</span></h3>
+            <h3 class="form-section-title"><span data-i18n="apply.yourWork">Your work</span> <span class="form-section-sub" data-i18n="apply.upTo3Works">Up to 3 works</span></h3>
             <div id="work-blocks"></div>
-            <button type="button" class="add-work-btn" id="add-work-btn">+ Add another work</button>
+            <button type="button" class="add-work-btn" id="add-work-btn" data-i18n="apply.addWork">+ Add another work</button>
           </div>
 
           <!-- Section 3: Supporting materials -->
           <div class="form-section">
-            <h3 class="form-section-title">Supporting materials</h3>
+            <h3 class="form-section-title" data-i18n="apply.supportingMaterials">Supporting materials</h3>
             <div class="upload-row">
               <div class="field-wrap">
-                <label class="field-label">Portfolio <span class="req">*</span></label>
+                <label class="field-label"><span data-i18n="apply.portfolio">Portfolio</span> <span class="req">*</span></label>
                 <label class="upload-zone">
                   <input type="file" name="portfolio" accept=".pdf" hidden>
                   <span class="upload-icon">↑</span>
-                  <span class="upload-zone-text"><span class="upload-choose">Choose file</span> or drag here</span>
-                  <span class="upload-hint">PDF · max 20 MB</span>
+                  <span class="upload-zone-text"><span class="upload-choose" data-i18n="apply.chooseFile">Choose file</span><span data-i18n="apply.orDragHere"> or drag here</span></span>
+                  <span class="upload-hint" data-i18n="apply.portfolioHint">PDF · max 20 MB</span>
                   <span class="upload-filename"></span>
                 </label>
-                <span class="field-error">This field is required</span>
+                <span class="field-error" data-i18n="apply.fieldRequired">This field is required</span>
               </div>
               <div class="field-wrap">
-                <label class="field-label">CV</label>
+                <label class="field-label" data-i18n="apply.cv">CV</label>
                 <label class="upload-zone">
                   <input type="file" name="cv" accept=".pdf,.doc,.docx" hidden>
                   <span class="upload-icon">↑</span>
-                  <span class="upload-zone-text"><span class="upload-choose">Choose file</span> or drag here</span>
-                  <span class="upload-hint">PDF or DOC · max 5 MB</span>
+                  <span class="upload-zone-text"><span class="upload-choose" data-i18n="apply.chooseFile">Choose file</span><span data-i18n="apply.orDragHere"> or drag here</span></span>
+                  <span class="upload-hint" data-i18n="apply.cvHint">PDF or DOC · max 5 MB</span>
                   <span class="upload-filename"></span>
                 </label>
               </div>
             </div>
             <div class="field-wrap form-full">
-              <label class="field-label">Website / Portfolio URL</label>
+              <label class="field-label" data-i18n="apply.portfolioUrl">Website / Portfolio URL</label>
               <input type="url" name="portfolioUrl">
             </div>
           </div>
@@ -336,14 +339,14 @@
           <div class="form-footer">
             <label class="privacy-check">
               <input type="checkbox" class="declaration-check">
-              <span>All submitted works are original and created by me. If selected, I give the organisers permission to photograph and share images of my work to promote and document the exhibition. I retain all rights to my work.</span>
+              <span data-i18n="apply.declaration1">All submitted works are original and created by me. If selected, I give the organisers permission to photograph and share images of my work to promote and document the exhibition. I retain all rights to my work.</span>
             </label>
             <label class="privacy-check">
               <input type="checkbox" class="declaration-check">
-              <span>I have read and accept the <a href="terms.html" target="_blank" class="plain-link">Terms &amp; Conditions</a> and <a href="privacy.html" target="_blank" class="plain-link">Privacy Policy</a>.</span>
+              <span data-i18n="apply.declaration2">I have read and accept the <a href="terms.html" target="_blank" class="plain-link">Terms &amp; Conditions</a> and <a href="privacy.html" target="_blank" class="plain-link">Privacy Policy</a>.</span>
             </label>
-            <button type="submit" class="btn btn-primary apply-submit" id="apply-submit" disabled>Submit Application</button>
-            <p class="apply-submit-help">If you are having problems submitting the application form please email your materials to <a href="mailto:artists@homeawayfromhome.art" class="apply-submit-help-link">artists@homeawayfromhome.art</a></p>
+            <button type="submit" class="btn btn-primary apply-submit" id="apply-submit" disabled data-i18n="apply.submitBtn">Submit Application</button>
+            <p class="apply-submit-help" data-i18n="apply.submitHelp">If you are having problems submitting the application form please email your materials to <a href="mailto:artists@homeawayfromhome.art" class="apply-submit-help-link">artists@homeawayfromhome.art</a></p>
           </div>
 
         </form>

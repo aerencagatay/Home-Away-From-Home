@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'Damiano Gulli': 'Bio coming soon.',
     'Dr. Sharon Hecker': 'DR. SHARON HECKER (B.A. Yale University, cum laude; M.A. and Ph.D., University of California, Berkeley) is an art historian, curator, author, educator, and consultant. A leading authority on modern and contemporary Italian art and on Medardo Rosso, she has authored over 30 publications. Dr. Hecker has curated exhibitions at institutions such as the Peggy Guggenheim Collection, Harvard University Art Museums, Pulitzer Arts Foundation, and Nasher Sculpture Center. Her work has been supported by the Getty, Mellon, and Fulbright Foundations. She is Chair of the International Catalogue Raisonné Association (ICRA) and Coordinator of the Expert Witness Pool for the Court of Arbitration for Art (CAfA).',
     'Valentina Kovalishina': 'Bio coming soon.',
-    'Lorenzo Perini Natali': 'Bio coming soon.',
+    'Lorenzo Perini Natali': 'Lorenzo Perini Natali, born in Viareggio (Lucca) in 1990, lives in Milan. After working for an industrial group with production sites in Italy, Brazil and the United States, he moves to Milan where he graduates in Visual Arts at NABA Milano, specializes with a Master in Contemporary Art Markets and does an internship at Sotheby\'s Milan. The Collezione Perini Natali is based in Milan and Viareggio (Lucca) and focuses on emerging Italian and international artists.\n\nIn 2021 he founded PROGETTO LUDOVICO, a platform dedicated to research, production and exhibitions, focusing on the connections between visual arts and industry.',
     'Paula Trommel': 'Paula Trommel is the Global Head of Risk and Compliance at Hauser & Wirth, with an international career spanning the art market, law, and regulatory governance. She previously held key roles at Christie\'s in London and Milan. Paula also worked at the UK Financial Conduct Authority (FCA) and The Fine Art Group, specialising in anti-money laundering, international sanctions, and financial regulation in the art market. She holds law degrees from both Germany and the United Kingdom, as well as a Master\'s in Arts Management from SDA Bocconi.'
   };
 
@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     const bioEl = document.querySelector('.bio-text');
     const text = bios[name] || 'Bio coming soon.';
-    bioEl.textContent = text;
+    bioEl.innerHTML = text.split('\n\n').map(p => `<p>${p}</p>`).join('');
     const overlay = document.getElementById('bio-overlay');
     overlay.hidden = false;
     document.getElementById('bio-close')?.focus();
@@ -190,13 +190,14 @@ document.addEventListener('DOMContentLoaded', () => {
     block.className = 'work-block';
     block.dataset.index = index;
 
-    const removeBtn = isFirst ? '' : '<button type="button" class="work-remove-btn">Remove</button>';
+    const _t = window.t || (k => k);
+    const removeBtn = isFirst ? '' : `<button type="button" class="work-remove-btn" data-i18n="apply.removeWork">${_t('apply.removeWork')}</button>`;
 
     block.innerHTML = `
       <div class="work-header">
         <div class="work-header-left">
           <span class="work-dot"></span>
-          <span class="work-label">Work ${index}</span>
+          <span class="work-label">${_t('apply.work')} ${index}</span>
           <span class="work-summary"></span>
         </div>
         <div class="work-header-right">
@@ -207,31 +208,31 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="work-body">
         <div class="form-grid-2">
           <div class="field-wrap">
-            <label class="field-label">Title <span class="req">*</span></label>
+            <label class="field-label" data-i18n="apply.workTitle">${_t('apply.workTitle')}</label>
             <input type="text" name="work${index}_title" required>
-            <span class="field-error">This field is required</span>
+            <span class="field-error" data-i18n="apply.fieldRequired">${_t('apply.fieldRequired')}</span>
           </div>
           <div class="field-wrap">
-            <label class="field-label">Year <span class="req">*</span></label>
+            <label class="field-label" data-i18n="apply.workYear">${_t('apply.workYear')}</label>
             <input type="text" name="work${index}_year" required>
-            <span class="field-error">This field is required</span>
+            <span class="field-error" data-i18n="apply.fieldRequired">${_t('apply.fieldRequired')}</span>
           </div>
         </div>
         <div class="form-grid-2">
           <div class="field-wrap">
-            <label class="field-label">Classification <span class="req">*</span></label>
+            <label class="field-label" data-i18n="apply.workClassification">${_t('apply.workClassification')}</label>
             ${buildClassificationSelect(index)}
-            <span class="field-error">This field is required</span>
+            <span class="field-error" data-i18n="apply.fieldRequired">${_t('apply.fieldRequired')}</span>
           </div>
           <div class="field-wrap">
-            <label class="field-label">Medium <span class="req">*</span></label>
+            <label class="field-label" data-i18n="apply.workMedium">${_t('apply.workMedium')}</label>
             <input type="text" name="work${index}_medium" required>
-            <span class="field-error">This field is required</span>
+            <span class="field-error" data-i18n="apply.fieldRequired">${_t('apply.fieldRequired')}</span>
           </div>
         </div>
         <div class="form-grid-2">
           <div class="field-wrap">
-            <label class="field-label">Dimensions <span class="field-note">in centimetres (cm)</span></label>
+            <label class="field-label"><span data-i18n="apply.workDimensions">${_t('apply.workDimensions')}</span> <span class="field-note" data-i18n="apply.workDimensionsNote">${_t('apply.workDimensionsNote')}</span></label>
             <div class="dims-group">
               <input type="text" name="work${index}_h" placeholder="H">
               <input type="text" name="work${index}_w" placeholder="W">
@@ -239,14 +240,14 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
           </div>
           <div class="field-wrap">
-            <label class="field-label">Weight <span class="field-note">in kilograms (kg)</span></label>
+            <label class="field-label"><span data-i18n="apply.workWeight">${_t('apply.workWeight')}</span> <span class="field-note" data-i18n="apply.workWeightNote">${_t('apply.workWeightNote')}</span></label>
             <input type="text" name="work${index}_kg">
           </div>
         </div>
 
         <div class="field-wrap">
-          <label class="field-label">Images <span class="req">*</span></label>
-          <p class="apply-hint">Up to 4 images · JPG, PNG or TIFF · max 10 MB · min 1500px</p>
+          <label class="field-label" data-i18n="apply.workImages">${_t('apply.workImages')}</label>
+          <p class="apply-hint" data-i18n="apply.workImagesHint">${_t('apply.workImagesHint')}</p>
           <div class="image-grid" data-work="${index}">
             <div class="image-slot image-slot--empty"><span>+</span></div>
             <div class="image-slot image-slot--empty"><span>+</span></div>
@@ -254,14 +255,14 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="image-slot image-slot--empty"><span>+</span></div>
           </div>
           <input type="file" class="image-grid-input" accept="image/jpeg,image/png,image/tiff" multiple hidden data-work="${index}">
-          <span class="field-error">At least one image is required</span>
-          <button type="button" class="video-toggle-btn" data-work="${index}">+ Add video</button>
+          <span class="field-error" data-i18n="apply.workImageRequired">${_t('apply.workImageRequired')}</span>
+          <button type="button" class="video-toggle-btn" data-work="${index}" data-i18n="apply.addVideo">${_t('apply.addVideo')}</button>
           <div class="video-zone" data-work="${index}" hidden>
             <label class="upload-zone video-upload-zone">
               <input type="file" name="work${index}_video" accept="video/mp4" hidden>
               <span class="upload-icon">↑</span>
-              <span class="upload-zone-text"><span class="upload-choose">Choose video</span> or drag here</span>
-              <span class="upload-hint">MP4 · max 500 MB</span>
+              <span class="upload-zone-text"><span class="upload-choose" data-i18n="apply.chooseVideo">${_t('apply.chooseVideo')}</span><span data-i18n="apply.orDragHere">${_t('apply.orDragHere')}</span></span>
+              <span class="upload-hint" data-i18n="apply.videoHint">${_t('apply.videoHint')}</span>
             </label>
             <div class="video-file-row" hidden>
               <span class="video-filename"></span>
@@ -269,25 +270,25 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <label class="privacy-check" style="margin-top:0.5rem">
               <input type="checkbox" name="work${index}_hasEquipment">
-              <span>I will bring my own display equipment (e.g. screen, power cord)</span>
+              <span data-i18n="apply.equipmentCheck">${_t('apply.equipmentCheck')}</span>
             </label>
           </div>
         </div>
 
         <div class="field-wrap">
-          <label class="field-label">About this work <span class="req">*</span></label>
-          <p class="field-hint">What it is and how it connects to the themes of Home Away From Home. Max 200 words. <a href="${GUIDELINES_PDF}" download="Open-Call-Guidelines.pdf" class="plain-link">Download guidelines</a></p>
+          <label class="field-label" data-i18n="apply.workAbout">${_t('apply.workAbout')}</label>
+          <p class="field-hint"><span data-i18n="apply.workAboutHint">${_t('apply.workAboutHint')}</span> <a href="${GUIDELINES_PDF}" download="Open-Call-Guidelines.pdf" class="plain-link" data-i18n="apply.downloadGuidelines">${_t('apply.downloadGuidelines')}</a></p>
           <textarea name="work${index}_about" rows="4" required></textarea>
-          <span class="field-error">This field is required</span>
+          <span class="field-error" data-i18n="apply.fieldRequired">${_t('apply.fieldRequired')}</span>
         </div>
 
         <div class="field-wrap">
-          <label class="field-label">Installation preferences</label>
-          <p class="field-hint">Please share how you'd ideally like your work displayed. Due to the nature of the venue some requests may have limitations, but if you are selected we will work with you to find the best solution.</p>
+          <label class="field-label" data-i18n="apply.workInstallation">${_t('apply.workInstallation')}</label>
+          <p class="field-hint" data-i18n="apply.workInstallationHint">${_t('apply.workInstallationHint')}</p>
           <textarea name="work${index}_installation" rows="3"></textarea>
           <label class="privacy-check" style="margin-top:0.5rem">
             <input type="checkbox" class="flexible-check" data-work="${index}">
-            <span>I'm flexible, no specific requirements</span>
+            <span data-i18n="apply.workFlexible">${_t('apply.workFlexible')}</span>
           </label>
         </div>
       </div>
@@ -405,13 +406,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const isOpen = !videoZone.hidden;
       if (isOpen) {
         videoZone.hidden = true;
-        videoToggle.textContent = '+ Add video';
+        videoToggle.textContent = (window.t || (k=>k))('apply.addVideo');
         videoInput.value = '';
         videoUploadZone.hidden = false;
         videoFileRow.hidden = true;
       } else {
         videoZone.hidden = false;
-        videoToggle.textContent = '− Remove video';
+        videoToggle.textContent = (window.t || (k=>k))('apply.removeVideo');
       }
     });
 
@@ -525,13 +526,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('work-blocks');
     const count = container.querySelectorAll('.work-block').length;
     if (count >= 3) return;
-    container.appendChild(createWorkBlock(false));
+    const block = createWorkBlock(false);
+    container.appendChild(block);
+    if (window.applyI18n) window.applyI18n(block);
     updateAddBtn();
   });
 
   const workContainer = document.getElementById('work-blocks');
   if (workContainer) {
-    workContainer.appendChild(createWorkBlock(true));
+    const firstBlock = createWorkBlock(true);
+    workContainer.appendChild(firstBlock);
+    if (window.applyI18n) window.applyI18n(firstBlock);
     updateAddBtn();
   }
 
@@ -549,7 +554,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (input.files.length > 0) {
           zone.classList.add('has-file');
           if (filenameEl) filenameEl.textContent = input.files[0].name;
-          if (chooseEl) chooseEl.textContent = 'Change file';
+          if (chooseEl) chooseEl.textContent = (window.t || (k=>k))('apply.changeFile');
           const wrap = zone.closest('.field-wrap');
           wrap?.classList.remove('has-error');
         }
@@ -904,5 +909,31 @@ document.addEventListener('DOMContentLoaded', () => {
       submitApplication(applyForm);
     });
   }
+
+  // ─── Force PDF download (bypasses browser inline viewer) ───
+  document.querySelectorAll('a[download$=".pdf"]').forEach(link => {
+    link.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const url = link.getAttribute('href');
+      const filename = link.getAttribute('download') || 'guidelines.pdf';
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('fetch failed');
+        const blob = await res.blob();
+        const blobUrl = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = blobUrl;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => {
+          document.body.removeChild(a);
+          URL.revokeObjectURL(blobUrl);
+        }, 1000);
+      } catch {
+        window.open(url, '_blank');
+      }
+    });
+  });
 
 });
