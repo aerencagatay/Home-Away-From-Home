@@ -166,13 +166,15 @@ html, body {
   overflow: hidden;
 }
 
-.home-pdf {
+.home-png {
   display: block;
   width: 100%;
   height: calc(100vh - var(--nav-h));
   height: calc(100svh - var(--nav-h));
-  border: none;
-  background: var(--bg);
+  object-fit: contain;
+  object-position: center center;
+  pointer-events: none;
+  user-select: none;
 }
 
 /* ─── MENU VIEW ─── */
