@@ -149,7 +149,20 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ─── Bio overlay ───
+  // Track the currently open bio so we can re-render on language switch
+  let _openBioName = null;
+
+  function _renderBioText(name) {
+    const lang = document.documentElement.lang || 'en';
+    const bioMap = lang === 'it' ? biosIT : bios;
+    const text = bioMap[name] || (lang === 'it' ? 'Bio in arrivo.' : 'Bio coming soon.');
+    document.querySelector('.bio-text').innerHTML =
+      text.split('\n\n').map(p => `<p>${p}</p>`).join('');
+  }
+
   function openBio(name, role) {
+    _openBioName = name;
+
     const nameEl = document.getElementById('bio-name');
     const roleEl = document.getElementById('bio-role');
     const ruleEl = document.querySelector('.bio-rule');
@@ -166,17 +179,21 @@ document.addEventListener('DOMContentLoaded', () => {
       if (ruleEl) ruleEl.hidden = true;
       nameEl.classList.add('no-role');
     }
-    const bioEl = document.querySelector('.bio-text');
-    const lang = document.documentElement.lang || 'en';
-    const bioMap = lang === 'it' ? biosIT : bios;
-    const text = bioMap[name] || (lang === 'it' ? 'Bio in arrivo.' : 'Bio coming soon.');
-    bioEl.innerHTML = text.split('\n\n').map(p => `<p>${p}</p>`).join('');
+    _renderBioText(name);
     const overlay = document.getElementById('bio-overlay');
     overlay.hidden = false;
     document.getElementById('bio-close')?.focus();
   }
 
   window.openBio = openBio;
+
+  // Re-render the open bio whenever the page language changes
+  new MutationObserver(() => {
+    const overlay = document.getElementById('bio-overlay');
+    if (overlay && !overlay.hidden && _openBioName) {
+      _renderBioText(_openBioName);
+    }
+  }).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
 
   document.getElementById('bio-close')?.addEventListener('click', () => {
     document.getElementById('bio-overlay').hidden = true;
