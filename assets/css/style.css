@@ -161,22 +161,26 @@ html, body {
 .view-home {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: center;
   padding-top: var(--nav-h);
   background: var(--bg);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
 
-/* Wrapper centers content vertically; grows if content is taller than viewport */
+/* Equal spacers push .home-content to vertical center;
+   collapse automatically when content is taller than the viewport */
+.view-home::before,
+.view-home::after {
+  content: '';
+  flex: 1 1 0;
+}
+
 .home-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  flex: 1;
-  min-height: calc(100svh - var(--nav-h));
-  min-height: calc(100vh - var(--nav-h));
+  width: 100%;
   padding: 1.5rem 1rem max(1.5rem, env(safe-area-inset-bottom));
   box-sizing: border-box;
 }
