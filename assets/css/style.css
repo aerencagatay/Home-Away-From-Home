@@ -160,36 +160,28 @@ html, body {
 /* ─── HOME VIEW ─── */
 .view-home {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding-top: var(--nav-h);
   background: var(--bg);
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
 }
 
-/* Equal spacers push .home-content to vertical center;
-   collapse automatically when content is taller than the viewport */
-.view-home::before,
-.view-home::after {
-  content: '';
-  flex: 1 1 0;
-}
-
+/* Image wrapper — relative so the button can overlap */
 .home-content {
+  position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 100%;
-  padding: 1.5rem 1rem max(1.5rem, env(safe-area-inset-bottom));
-  box-sizing: border-box;
+  height: 100%;
 }
 
 .home-png {
   display: block;
   max-width: 100%;
-  max-height: 65svh;
-  max-height: 65vh;
+  max-height: calc(100svh - var(--nav-h));
+  max-height: calc(100vh - var(--nav-h));
   width: auto;
   height: auto;
   object-fit: contain;
@@ -197,9 +189,13 @@ html, body {
   user-select: none;
 }
 
+/* Button overlays the image — bottom-centre, above safe area */
 .home-open-call-cta {
-  flex-shrink: 0;
-  margin-top: 1.5rem;
+  position: absolute;
+  bottom: max(2rem, env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
   font-size: 1rem;
   padding: 0.9rem 2.75rem;
   letter-spacing: 0.08em;
