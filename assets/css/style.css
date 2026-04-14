@@ -172,13 +172,19 @@ html, body {
   display: block;
   /* Never exceed viewport width or remaining height — whichever binds first */
   max-width: 100%;
-  max-height: calc(100vh - var(--nav-h));
-  max-height: calc(100svh - var(--nav-h));
+  max-height: calc(100svh - var(--nav-h) - 3.5rem);
+  max-height: calc(100vh - var(--nav-h) - 3.5rem);
   width: auto;
   height: auto;
   object-fit: contain;
   pointer-events: none;
   user-select: none;
+}
+
+.home-open-call-cta {
+  flex-shrink: 0;
+  margin-top: 1rem;
+  margin-bottom: max(1rem, env(safe-area-inset-bottom));
 }
 
 /* ─── MENU VIEW ─── */
