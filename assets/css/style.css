@@ -161,31 +161,41 @@ html, body {
 .view-home {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  align-items: stretch;
   padding-top: var(--nav-h);
   background: var(--bg);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
 
+/* Wrapper centers content vertically; grows if content is taller than viewport */
+.home-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-height: calc(100svh - var(--nav-h));
+  min-height: calc(100vh - var(--nav-h));
+  padding: 1.5rem 1rem max(1.5rem, env(safe-area-inset-bottom));
+  box-sizing: border-box;
+}
+
 .home-png {
   display: block;
   max-width: 100%;
-  max-height: calc(100svh - var(--nav-h) - 5.5rem);
-  max-height: calc(100vh - var(--nav-h) - 5.5rem);
+  max-height: 65svh;
+  max-height: 65vh;
   width: auto;
   height: auto;
   object-fit: contain;
   pointer-events: none;
   user-select: none;
-  flex-shrink: 0;
 }
 
 .home-open-call-cta {
   flex-shrink: 0;
-  margin-top: 1.25rem;
-  margin-bottom: max(1.5rem, env(safe-area-inset-bottom));
+  margin-top: 1.5rem;
   font-size: 1rem;
   padding: 0.9rem 2.75rem;
   letter-spacing: 0.08em;
